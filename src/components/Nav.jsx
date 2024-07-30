@@ -194,28 +194,20 @@ const Nav = () => {
               </li>
             )}
             <li>
-              <Link
-                to="wholesale_pricelist"
-                className={
-                  pathname.includes("/wholesale_pricelist")
-                    ? "text-secondary font-bold"
-                    : ""
-                }
+              <a
+                href="https://drive.google.com/file/d/1s6Ma9ZhD-XvMyL0UPKwuW6QMlUVhEo42/view?usp=sharing"
+                target="_blank"
               >
                 Wholesales Price List
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
-                to="retail_pricelist"
-                className={
-                  pathname.includes("/retail_pricelist")
-                    ? "text-secondary font-bold"
-                    : ""
-                }
+              <a
+                href="https://drive.google.com/file/d/1ZOcMsJQL5QHr0Hx6Ynpn74Oz-D9ivCgn/view?usp=sharing"
+                target="_blank"
               >
                 Retail Price List
-              </Link>
+              </a>
             </li>
             <li>
               <Link
@@ -297,28 +289,20 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="wholesale_pricelist"
-                    className={
-                      pathname.includes("/wholesale_pricelist")
-                        ? "text-secondary font-bold"
-                        : ""
-                    }
+                  <a
+                    href="https://drive.google.com/file/d/1s6Ma9ZhD-XvMyL0UPKwuW6QMlUVhEo42/view?usp=sharing"
+                    target="_blank"
                   >
                     Wholesales Price List
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="retail_pricelist"
-                    className={
-                      pathname.includes("/retail_pricelist")
-                        ? "text-secondary font-bold"
-                        : ""
-                    }
+                  <a
+                    href="https://drive.google.com/file/d/1ZOcMsJQL5QHr0Hx6Ynpn74Oz-D9ivCgn/view?usp=sharing"
+                    target="_blank"
                   >
                     Retail Price List
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link

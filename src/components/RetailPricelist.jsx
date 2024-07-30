@@ -1,9 +1,9 @@
-import { RETAILPRICELIST } from "../assets";
+// import { RETAILPRICELIST } from "../assets";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const RetailPricelist = () => {
   const [numPages, setNumPages] = useState(null);
@@ -27,9 +27,9 @@ const RetailPricelist = () => {
 
   return (
     <div className="w-[95%] mx-auto p-3 bg-primary">
-      <div style={{ overflow: "scroll", width: "100%" }}>
+      {/* <div style={{ overflow: "scroll", width: "100%" }}>
         <Document
-          file={RETAILPRICELIST}
+          file={`https://drive.google.com/file/d/1s6Ma9ZhD-XvMyL0UPKwuW6QMlUVhEo42/view?usp=sharing`}
           onLoadSuccess={onDocumentLoadSuccess}
           className="w-full"
         >
@@ -51,7 +51,12 @@ const RetailPricelist = () => {
         >
           Next
         </button>
-      </div>
+      </div> */}
+
+      <iframe
+        src="https://drive.google.com/file/d/1s6Ma9ZhD-XvMyL0UPKwuW6QMlUVhEo42/view?usp=sharing"
+        className="w-full h-[300px]"
+      ></iframe>
     </div>
   );
 };

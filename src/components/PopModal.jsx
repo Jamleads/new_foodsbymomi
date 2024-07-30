@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import Button from "./Button";
 import { LogoBg } from "../assets";
-import { Link } from "react-router-dom";
 
 const PopModal = ({ openForm }) => {
   return (
@@ -19,7 +18,12 @@ const PopModal = ({ openForm }) => {
               launching soon, bringing you authentic tastes straight from the
               heart of Africa.{" "}
               <span className="text-secondary underline">
-                <Link to="brand_product">View brand product</Link>
+                <a
+                  href="https://drive.google.com/file/d/1vJP6W-uHQ8DGw9hI3nO-tex_fZrRe5Nl/view?usp=sharing"
+                  target="_blank"
+                >
+                  View brand product
+                </a>
               </span>
             </p>
 

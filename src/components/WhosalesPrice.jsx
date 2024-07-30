@@ -1,4 +1,4 @@
-import { WHOLESALEPRICE } from "../assets";
+// import { WHOLESALEPRICE } from "../assets";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -29,7 +29,7 @@ const WhosalesPrice = () => {
     <div className="w-[95%] mx-auto p-3 bg-primary">
       <div style={{ overflow: "scroll", width: "100%" }}>
         <Document
-          file={WHOLESALEPRICE}
+          file={"WHOLESALEPRICE"}
           onLoadSuccess={onDocumentLoadSuccess}
           className="w-full"
         >

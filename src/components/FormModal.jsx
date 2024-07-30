@@ -116,7 +116,6 @@ const FormModal = () => {
                 <option value="" className="text-red">
                   Select option
                 </option>
-                {/* TODO: TRY GET LOCATION BASE ON THE COUNTRY MARKET WE ARE */}
                 <option value="nigeria">Nigeria</option>
                 <option value="unitesd state">United State</option>
                 <option value="kenya">United Kingdom</option>

@@ -1,4 +1,4 @@
-import { BrandProductPdf } from "../assets";
+// import { BrandProductPdf } from "../assets";
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -25,7 +25,7 @@ const BrandProduct = () => {
     <div className="w-[95%] mx-auto p-3 bg-primary">
       <div style={{ overflow: "scroll", width: "100%" }}>
         <Document
-          file={BrandProductPdf}
+          file={"BrandProductPdf"}
           onLoadSuccess={onDocumentLoadSuccess}
           className="w-full"
         >
