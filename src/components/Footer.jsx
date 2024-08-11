@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  FbIcon,
-  IgIcon,
-  LogoBg,
-  // RETAILPRICELIST,
-  TwitterIcon2,
-  // WHOLESALEPRICE,
-} from "../assets";
+import { FbIcon, IgIcon, LogoBg, TwitterIcon2 } from "../assets";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedCatProduct } from "../features/CategoryProductSlice";
 
@@ -113,12 +106,9 @@ const Footer = () => {
               <li className="text-[#8A8FB9] text-sm">
                 <Link to="orders">Order History</Link>
               </li>
-              <li className="text-[#8A8FB9] text-sm">
-                <Link to="retail_pricelist">Developer test</Link>
-              </li>
-              <li className="text-[#8A8FB9] text-sm">
+              {/* <li className="text-[#8A8FB9] text-sm">
                 <a
-                  href="https://drive.google.com/file/d/1s6Ma9ZhD-XvMyL0UPKwuW6QMlUVhEo42/view?usp=sharing"
+                  href="https://pricelist.foodsbymomi.com/wholesales_pricelist.pdf"
                   target="_blank"
                 >
                   Wholesales Price List
@@ -126,12 +116,12 @@ const Footer = () => {
               </li>
               <li className="text-[#8A8FB9] text-sm">
                 <a
-                  href="https://drive.google.com/file/d/1ZOcMsJQL5QHr0Hx6Ynpn74Oz-D9ivCgn/view?usp=sharing"
+                  href="https://pricelist.foodsbymomi.com/retail_pricelist.pdf"
                   target="_blank"
                 >
                   Retail Price List
                 </a>
-              </li>
+              </li> */}
               <li className="text-[#8A8FB9] text-sm">
                 <Link to="about_us">About Us</Link>
               </li>

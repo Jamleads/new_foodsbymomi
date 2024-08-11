@@ -1,7 +1,8 @@
 export const countryPrice = (product, country) => {
-  if (country === "Nigeria") {
-    return product?.priceNgn;
-  } else if (country === "Ghana") {
+  // if (country === "Nigeria") {
+  //   return product?.priceNgn;
+  // } else
+  if (country === "Ghana") {
     return product?.priceGhana;
   } else if (country === "United Kingdom") {
     return product?.priceUk;
@@ -10,13 +11,14 @@ export const countryPrice = (product, country) => {
   } else if (country === "Canada") {
     return product?.priceCanada;
   } else {
-    ("It is working");
+    return product?.priceUk;
   }
 };
 export const countryCurrency = (product, country) => {
-  if (country === "Nigeria") {
-    return product?.nigeriaCode;
-  } else if (country === "Ghana") {
+  // if (country === "Nigeria") {
+  //   return product?.nigeriaCode;
+  // } else
+  if (country === "Ghana") {
     return product?.ghanaCode;
   } else if (country === "United Kingdom") {
     return product?.ukCode;
@@ -24,5 +26,7 @@ export const countryCurrency = (product, country) => {
     return product?.usCode;
   } else if (country === "Canada") {
     return product?.canadaCode;
-  } else product = "Allow location to see price";
+  } else {
+    return product?.ukCode;
+  }
 };

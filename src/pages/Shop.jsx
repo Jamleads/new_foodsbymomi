@@ -47,6 +47,13 @@ const Shop = () => {
         successToast("Product added to cart");
         refetchCart();
       } catch (error) {
+        if (
+          error?.status == 500 ||
+          error?.status == 401 ||
+          error?.data?.message == "Something went wrong!"
+        ) {
+          dispatch(setAuthFormOpen(true));
+        }
         errorToast(error?.message);
       }
     }

@@ -26,7 +26,6 @@ const LayOutKid = () => {
   const { pathname } = useLocation();
 
   const [popUp, setPopUp] = useState(true);
-
   const { data, isLoading } = useGetAllProductQuery();
   const { data: cartData, isFetching, refetch } = useGetCartQuery();
   const { data: categoryData, isLoading: isLoadingCat } =

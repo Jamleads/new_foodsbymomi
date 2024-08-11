@@ -110,15 +110,15 @@ textarea:focus {
     margin: 10px 0px;
   }
   .collectionCard .collection-wrap .collection-image-wrap {
-    width: 100%;
-    height: 50%;
+    /* width: 100%; */
+    /* height: 50%; */
   }
   .collectionCard
     .collection-wrap
     .collection-image-wrap
     .collection-image
     img {
-    width: 270px;
+    /* width: 270px; */
   }
   .collectionCard .collection-wrap .collection-image-wrap .colection-bolb {
     width: 220px;

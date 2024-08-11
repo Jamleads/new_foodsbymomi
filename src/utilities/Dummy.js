@@ -1,4 +1,11 @@
-import { Product1, Product2, Product3, Product4 } from "../assets";
+import {
+  FoodBanner1,
+  LondonTradefair,
+  Product1,
+  // Product2,
+  // Product3,
+  // Product4,
+} from "../assets";
 
 export const AdvertMessage = [
   {
@@ -49,246 +56,82 @@ export const sliderCard = [
   {
     id: 7,
     style: "carousel1",
+    link: "https://foodsbymomi.bumpa.shop/",
+    productImg: LondonTradefair,
+    collectionTitle: "FOODSBYMOMI AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
+    collectionDecription:
+      "We are thrilled to announce that FoodsByMomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
+  },
+  {
+    id: 2,
+    style: "carousel1",
+    link: "shop",
+    productImg: FoodBanner1,
+    collectionTitle:
+      "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
+    collectionDecription:
+      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
+  },
+  {
+    id: 3,
+    style: "carousel1",
+    link: "https://foodsbymomi.bumpa.shop/",
+    productImg: LondonTradefair,
+    collectionTitle: "FOODSBYMOMI AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
+    collectionDecription:
+      "We are thrilled to announce that FoodsByMomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
+  },
+  {
+    id: 2,
+    style: "carousel1",
+    link: "shop",
+    productImg: FoodBanner1,
+    collectionTitle:
+      "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
+    collectionDecription:
+      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
+  },
+  {
+    id: 7,
+    style: "carousel1",
+    link: "shop",
     productImg: Product1,
     collectionTitle:
       "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
     collectionDecription:
       "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
+  },
+];
 
-    // productCard
-    title: "POUNDO YARM FLOUR 'IYAN'",
-    categories: [
-      "Food",
-      "keg",
-      "Grains and Flours",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
+export const profileLinks = [
+  {
+    id: 1,
+    path: "profile",
+    title: "profile",
   },
   {
-    id: 8,
-    style: "carousel1",
-    productImg: Product2,
-    collectionTitle:
-      "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
-    collectionDecription:
-      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
-
-    // productCard
-    title: "EGGPLANT SWALLOW",
-    categories: [
-      "Food",
-      "keg",
-      "Grains and Flours",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
+    id: 2,
+    path: "cart",
+    title: "cart",
   },
   {
-    id: 9,
-    style: "carousel1",
-    productImg: Product3,
-    collectionTitle:
-      "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
-    collectionDecription:
-      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
-
-    // productCard
-    title: "CABBAGE SWALLOW",
-    categories: [
-      "Food",
-      "keg",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
+    id: 3,
+    path: "favorite",
+    title: "favorite",
   },
   {
-    id: 10,
-    style: "carousel1",
-    productImg: Product4,
-    collectionTitle: "Savor the Flavor: Unforgettable Culinary Creations",
-    collectionDecription:
-      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
-
-    // productCard
-    title: "POUNDO YARM FLOUR",
-    categories: [
-      "Food",
-      "keg",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
+    id: 4,
+    path: "orders",
+    title: "order history",
   },
   {
-    id: 11,
-    style: "carousel1",
-    productImg: Product4,
-    collectionTitle: "Savor the Flavor: Unforgettable Culinary Creations",
-    collectionDecription:
-      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
-
-    // productCard
-    title: "POUNDO YARM FLOUR",
-    categories: [
-      "Food",
-      "keg",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
+    id: 5,
+    path: "rewards",
+    title: "rewards",
   },
   {
-    id: 12,
-    style: "carousel1",
-    productImg: Product4,
-    collectionTitle: "Savor the Flavor: Unforgettable Culinary Creations",
-    collectionDecription:
-      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
-
-    // productCard
-    title: "POUNDO YARM FLOUR",
-    categories: [
-      "Food",
-      "keg",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
-  },
-  {
-    id: 13,
-    style: "carousel1",
-    productImg: Product4,
-    collectionTitle: "Savor the Flavor: Unforgettable Culinary Creations",
-    collectionDecription:
-      "From savory starters to mouthwatering mains, our menu is a celebration of flavors from around the world. Try our signature [dish name], a symphony of perfectly balanced ingredients that will transport you to food paradise.",
-
-    // productCard
-    title: "POUNDO YARM FLOUR",
-    categories: [
-      "Food",
-      "keg",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
-  },
-  {
-    id: 14,
-    style: "carousel1",
-    productImg: Product4,
-    collectionTitle: "Savor the Flavor: Unforgettable Culinary Creations",
-    collectionDecription:
-      "From savory starters to mouthwatering mains, our menu is a celebration of flavors from around the world. Try our signature [dish name], a symphony of perfectly balanced ingredients that will transport you to food paradise.",
-
-    // productCard
-    title: "POUNDO YARM FLOUR",
-    categories: [
-      "Food",
-      "keg",
-      "Health and wellness",
-      "Popular product",
-      "Recently added",
-      "Ready made food",
-      "Packaged food",
-    ],
-    priceNgn: "10000",
-    priceUs: "40",
-    priceUk: "30",
-    priceGhana: "140",
-    ngeriaCode: "#",
-    ghanaCode: "GHS",
-    ukCode: "GBP",
-    usCode: "$",
-    priceCanada: "300",
-    canadaCode: "CAD",
+    id: 6,
+    path: "support",
+    title: "customer support",
   },
 ];

@@ -29,6 +29,5 @@ export { default as LinkIcon } from "../assets/LinkIcon.svg";
 export { default as LocationIcon } from "../assets/Location_icon.svg";
 export { default as LeftIcon } from "../assets/Left_icon.svg";
 export { default as waitlistBanner } from "../assets/waitlist.jpg";
-// export { default as BrandProductPdf } from "../assets/Brand_product.pdf";
-// export { default as WHOLESALEPRICE } from "../assets/FOODBYMOMI_WHOLESALE_PRICE_LIST.pdf";
-// export { default as RETAILPRICELIST } from "../assets/FoodbyMomiPricelist.pdf";
+export { default as LondonTradefair } from "../assets/London_tradefair.jpeg";
+export { default as FoodBanner1 } from "../assets/food_banner1.jpeg";

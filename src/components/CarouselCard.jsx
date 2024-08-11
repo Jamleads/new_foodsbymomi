@@ -12,7 +12,7 @@ const CarouselCard = ({
     <div
       className={`collectionCard ${style} h-full w-full relative overflow-x-hidden`}
     >
-      <div className="carouel-add-img absolute top-0 left-0">
+      <div className="carouel-add-img absolute top-0 left-0 z-50">
         <img src={MockUpMain} alt="" className="w-[80%]" />
       </div>
 
@@ -34,9 +34,13 @@ const CarouselCard = ({
           </button>
         </div>
 
-        <div className="collection-image-wrap lg:w-[50%] relative">
+        <div className="collection-image-wrap lg:w-[50%] w-full relative">
           <div className="collection-image flex items-center justify-center">
-            <img src={productImg} alt="collection of Prouct" />
+            <img
+              src={productImg}
+              alt="collection of Prouct"
+              className="w-full"
+            />
           </div>
           <div className="colection-bolb absolute top-0 right-12 w-[480px] h-[480px] bg-[#a8cc4515] mix-blend-multiply rounded-full"></div>
         </div>
