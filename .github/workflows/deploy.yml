@@ -40,6 +40,6 @@ jobs:
           server: foodbank.africa
           username: jamleads
           password: cPBs~MT+t~h8
-          server-dir: public_html/test
+          server-dir: public_html/test/
           local-dir: dist/
           protocol: ftp
