@@ -57,7 +57,9 @@ export const sliderCard = [
     id: 7,
     style: "carousel1",
     link: "https://foodsbymomi.bumpa.shop/",
-    productImg: LondonTradefair,
+    productImg:
+      "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723433560/London_tradefair_zgikwq.jpg",
+
     collectionTitle: "FOODSBYMOMI AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
     collectionDecription:
       "We are thrilled to announce that FoodsByMomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
@@ -66,7 +68,8 @@ export const sliderCard = [
     id: 2,
     style: "carousel1",
     link: "shop",
-    productImg: FoodBanner1,
+    productImg:
+      "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723433584/food_banner1_x7zct1.jpg",
     collectionTitle:
       "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
     collectionDecription:

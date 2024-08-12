@@ -80,6 +80,7 @@ const Home = () => {
     dispatch(selectProduct(product));
   };
 
+  console.log("the products", allProduct);
   const handleCategoryClick = (category) => {
     const theArray = allProduct.filter((item) =>
       item.categories.includes(category)
@@ -154,8 +155,8 @@ const Home = () => {
 
           <div className="flex items-center justify-center mt-10">
             <Link
-              to={`/Meat and Seafoods`}
-              onClick={() => handleCategoryClick("Meat and Seafoods")}
+              to={`/meat and seafood`}
+              onClick={() => handleCategoryClick("meat and seafood")}
             >
               <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
                 Load More
@@ -190,8 +191,8 @@ const Home = () => {
 
           <div className="flex items-center justify-center mt-10">
             <Link
-              to={`/Condiments`}
-              onClick={() => handleCategoryClick("Condiments")}
+              to={`/condiments`}
+              onClick={() => handleCategoryClick("condiments")}
             >
               <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
                 Load More

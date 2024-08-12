@@ -25,7 +25,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full lg:h-[65vh] overflow-x-hidden bg-red-500">
+    <div className="w-full overflow-x-hidden bg-red-500">
       <Slider {...settings} className=" bg-[#F2F0FF] h-full">
         {sliderCard.slice(0, 4).map((slider) => (
           <CarouselCard

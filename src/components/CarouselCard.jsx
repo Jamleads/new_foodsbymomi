@@ -22,7 +22,7 @@ const CarouselCard = ({
             {collectionTitle}
           </h1>
 
-          <p className="collection-decription text-xs text-[#8A8FB9] lg:my-5 lg:w-[80%]">
+          <p className="collection-decription md:text-base text-xs text-[#8A8FB9] lg:my-5 lg:w-[80%]">
             {collectionDecription}
           </p>
 

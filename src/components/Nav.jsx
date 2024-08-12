@@ -115,7 +115,7 @@ const Nav = () => {
                 <div
                   className={`${
                     openProfile ? "" : "hidden"
-                  } absolute top-10 right-0 bg-green-100 shadow-lg lg:w-[300px] z-50`}
+                  } absolute top-10 right-0 bg-white shadow-lg lg:w-[300px] z-50`}
                 >
                   <div className="py-1 px-2 bg-primary flex items-center gap-5">
                     <div className={`w-[40px] h-[40px] rounded-full`}>

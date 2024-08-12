@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
-import { FbIcon, IgIcon, LogoBg, TwitterIcon2 } from "../assets";
+import { LogoBg } from "../assets";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedCatProduct } from "../features/CategoryProductSlice";
+import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
+import { FaSquareWhatsapp, FaSquareXTwitter } from "react-icons/fa6";
+import { MdAttachEmail } from "react-icons/md";
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -31,13 +35,8 @@ const Footer = () => {
       </div>
 
       <div className="footer-top lg:p-0 px-5 py-5">
-        <div className="footer-top-wrap lg:w-[70%] mx-auto lg:py-20 flex lg:flex-row flex-col justify-between gap-5">
+        <div className="footer-top-wrap lg:w-[70%] mx-auto lg:py-20 flex lg:flex-row flex-col-reverse justify-between gap-5">
           <div className="lg:w-2/5">
-            <Link to="/">
-              <div className="w-[100px] h-[50px]flex items-center justify-center">
-                <img src={LogoBg} alt="logo" width="80%" />
-              </div>
-            </Link>
             <div className="w-full bg-[#ffffff] my-3 flex items-center justify-between">
               <input type="text" className="w-[70%] py-2 px-5" />
               <button className="py-2 px-5 text-xs bg-primary shadow-2xl rounded-md text-white font-bold">
@@ -54,12 +53,37 @@ const Footer = () => {
                 FoodsbyMomi Ltd 128, City Road London Ec1v2nx +44 20 8133 9447
               </li>
             </ul>
+
+            <div className="mt-5">
+              <p className="text-2xl">Powered by:</p>
+              <div className="flex items-center gap-3">
+                <Link to="/">
+                  <div className="w-[100px] h-[50px]flex items-center justify-center">
+                    <img src={LogoBg} alt="logo" width="80%" />
+                  </div>
+                </Link>
+                <a href="https://alat.ng/" target="_blank">
+                  <img
+                    src="https://res.cloudinary.com/dkmddgqsl/image/upload/v1723429676/cropped-ALAT_By_Wema_Bank-removebg-preview_mjuxj6.png"
+                    alt="alatpay logo"
+                    className="w-[100px]"
+                  />
+                </a>
+                <a href="https://wemabank.com/" target="_blank">
+                  <img
+                    src="https://res.cloudinary.com/dkmddgqsl/image/upload/v1723429446/wemaFull-logo_efew3u.svg"
+                    alt="the wema logo"
+                    className="w-[100px]"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="footer-links-wrap lg:w-1/5">
             <p className="text-[#000000] text-xl font-bold">Catagories</p>
             <ul className="mt-5">
-              {allCategories.map((category) => (
+              {allCategories?.slice(0, 6)?.map((category) => (
                 <Link
                   key={category.id}
                   to={`/${category.name}`}
@@ -138,25 +162,34 @@ const Footer = () => {
 
       <div className="footer-bottom bg-[#E7E4F8] lg:p-0 px-5 py-5">
         <div className="footer-button-wrap flex items-center justify-between py-2 lg:w-[60%] mx-auto">
-          <p className="text-[#8A8FB9] text-sm">
+          <p className="text-[#8A8FB9] md:text-base text-sm">
             &copy;<a href="/">Foodsbymomi</a> - All Rights Reserved
           </p>
           <div className="flex items-center gap-3 rounded-full">
-            <div className="git bg-[#151875] w-[25px] h-[25px] flex items-center justify-center rounded-full">
-              <a href="#">
-                <img src={FbIcon} alt="" />
-              </a>
-            </div>
-            <div className="linkedin bg-[#151875] w-[25px] h-[25px] flex items-center justify-center rounded-full">
-              <a href="#">
-                <img src={IgIcon} alt="" />
-              </a>
-            </div>
-            <div className="twitter bg-[#151875] w-[25px] h-[25px] flex items-center justify-center rounded-full">
-              <a href="#">
-                <img src={TwitterIcon2} alt="" />
-              </a>
-            </div>
+            <a href="mailto:hello@foodsbymomi.com" target="_blank">
+              <MdAttachEmail className="text-3xl text-primary font-bold" />
+            </a>
+            <a href="https://wa.me/+447376368788" target="_blank">
+              <FaSquareWhatsapp className="text-3xl text-primary font-bold" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/foodsbymomi-limited/mycompany/"
+              target="_blank"
+            >
+              <FaLinkedin className="text-3xl text-primary font-bold" />
+            </a>
+            <a
+              href="https://www.instagram.com/foodsbymomi?igsh=bmMxbGxvMTV6OWN1"
+              target="_blank"
+            >
+              <FaInstagramSquare className="text-3xl text-primary font-bold" />
+            </a>
+            <a href="https://x.com/foodsbymomi" target="_blank">
+              <FaSquareXTwitter className="text-3xl text-primary font-bold" />
+            </a>
+            <a href="https://www.facebook.com/foodsbymomi" target="_blank">
+              <FaFacebookSquare className="text-3xl text-primary font-bold" />
+            </a>
           </div>
         </div>
       </div>
