@@ -39,7 +39,7 @@ jobs:
         with:
           server: foodsbymomi.com
           username: jamleads
-          password: cPBs~MT+t~h8
+          password: Adetunji@12#
           server-dir: public_html/test/
           local-dir: dist/
-          protocol: ftps
+          protocol: ftp
