@@ -42,4 +42,4 @@ jobs:
           password: cPBs~MT+t~h8
           server-dir: public_html/test
           local-dir: dist/
-          protocol: ft
+          protocol: ftp
