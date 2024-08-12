@@ -4,7 +4,7 @@ name: Deploy React App to FTP Server
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
