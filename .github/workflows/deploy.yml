@@ -1,0 +1,45 @@
+# File Path: .github/workflows/deploy-react.yml
+name: Deploy React App to FTP Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      VITE_API_BASE_URL: # Set this variable with the appropriate value
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create a new directory
+        run: mkdir -p build
+
+      - name: Verify the directory was created
+        run: ls -la
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.11.1"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the React app
+        run: npm run build
+
+      - name: 📂 Sync files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: foodbank.africa
+          username: jamleads
+          password: cPBs~MT+t~h8
+          server-dir: public_html/test
+          local-dir: dist/
+          protocol: ft
