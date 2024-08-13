@@ -38,8 +38,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ftp.foodsbymomi.com
-          username: jamleads
-          password: Adetunji@12#
+          username: fooddjkb
+          password: 5LTq0qvzHhv4
           server-dir: public_html/test/
           local-dir: dist/
           protocol: ftp

@@ -149,7 +149,8 @@ const Cart = () => {
         firstName: firstName,
         lastName: lastName,
         metaData: null,
-        currency: cartValues[0]?.countryCode,
+        // currency: cartValues[0]?.countryCode,
+        currency: "USD",
         amount: chekOutTotal,
         onTransaction: function (response) {
           console.log("API response is oprned", response);
