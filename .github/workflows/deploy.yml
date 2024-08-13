@@ -40,6 +40,6 @@ jobs:
           server: ftp.foodsbymomi.com
           username: fooddjkb
           password: 5LTq0qvzHhv4
-          server-dir: public_html/test/
+          server-dir: public_html/
           local-dir: dist/
           protocol: ftp
