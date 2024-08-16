@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VITE_ALATPAY_API_KEY: 538cf1d3cbb041ca89a48eb942e30961
-      VITE_ALATPAY_BUSINESS_ID: 3076f833-25a7-4903-dff2-08dc653aeecb
+      VITE_ALATPAY_API_KEY: ${{ secrets.VITE_ALATPAY_API_KEY }}
+      VITE_ALATPAY_BUSINESS_ID: ${{ secrets.VITE_ALATPAY_BUSINESS_ID }}
+      VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
     steps:
       - name: Checkout code
@@ -39,8 +40,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ftp.foodsbymomi.com
-          username: fooddjkb
-          password: 5LTq0qvzHhv4
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           server-dir: public_html/
           local-dir: dist/
           protocol: ftp
