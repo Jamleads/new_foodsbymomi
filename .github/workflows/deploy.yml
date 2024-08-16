@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VITE_API_BASE_URL: # Set this variable with the appropriate value
+      VITE_ALATPAY_API_KEY: 538cf1d3cbb041ca89a48eb942e30961
+      VITE_ALATPAY_BUSINESS_ID: 3076f833-25a7-4903-dff2-08dc653aeecb
 
     steps:
       - name: Checkout code
