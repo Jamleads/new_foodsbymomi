@@ -111,7 +111,7 @@ const Cart = () => {
     }
   };
 
-  // // Flutterwave checkout
+  // // Flutterwave checkout .// coming back as an option for ordering
   // const [orderCheckOut, { isLoading: isOrdering }] = useOrderCheckOutMutation();
   // const checkOut = async () => {
   //   const payLoad = {
