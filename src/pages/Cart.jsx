@@ -11,7 +11,7 @@ import BarsLoader from "../utilities/BarsLoader";
 import { countryCurrency, countryPrice } from "../utilities/PriceSelection";
 import { errorToast, successToast } from "../utilities/ToastMessage";
 import { Link, useOutletContext } from "react-router-dom";
-// import { useOrderCheckOutMutation } from "../services/order";
+import { useOrderCheckOutMutation } from "../services/order";
 
 const Cart = () => {
   useEffect(() => {
@@ -21,6 +21,7 @@ const Cart = () => {
   const { refetchCart } = useOutletContext();
   const [cartValues, setCartValues] = useState([]);
   const [itemTotalAry, setItemTotalAry] = useState(null);
+  const [paymentPopup, setPaymentPopup] = useState(null);
 
   const theState = useSelector((state) => state);
   const cart = theState.cart?.cartList;
@@ -31,7 +32,18 @@ const Cart = () => {
     useRemoveItemFromCartMutation();
   const [updateCart, { isLoading }] = useUpdateCartMutation();
   const [triggerClearCart, { isLoading: isClearing }] = useLazyClearCartQuery();
+  const [orderCheckOut, { isLoading: isflutterwave }] =
+    useOrderCheckOutMutation();
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://web.alatpay.ng/js/alatpay.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   useEffect(() => {
     if (cart?.length > 0) {
       setCartValues(
@@ -53,6 +65,7 @@ const Cart = () => {
     const totalAry = cartValues?.map((item) => item?.total);
     setItemTotalAry(totalAry);
   }, [cartValues]);
+
   const overAllItemTotal = itemTotalAry?.reduce((pre, now) => pre + now, 0);
   const fee = (overAllItemTotal / 100) * 5;
   const chekOutTotal = overAllItemTotal + fee;
@@ -100,6 +113,7 @@ const Cart = () => {
       errorToast(error?.message);
     }
   };
+
   const clearCart = async () => {
     try {
       await triggerClearCart().unwrap();
@@ -111,32 +125,21 @@ const Cart = () => {
     }
   };
 
-  // // Flutterwave checkout .// coming back as an option for ordering
-  // const [orderCheckOut, { isLoading: isOrdering }] = useOrderCheckOutMutation();
-  // const checkOut = async () => {
-  //   const payLoad = {
-  //     total: chekOutTotal,
-  //     currencyCode: cartValues[0]?.countryCode,
-  //   };
-  //   try {
-  //     const res = await orderCheckOut(payLoad).unwrap();
-  //     window.location = res.paymentLink;
-  //   } catch (error) {
-  //     errorToast(error?.message);
-  //   }
-  // };
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://web.alatpay.ng/js/alatpay.js";
-    script.async = true;
-    script.onload = () => console.log("Alatpay script loaded successfully");
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
+  const fluterwaveCheckout = async () => {
+    const payLoad = {
+      method: "flutterwave",
+      response: {
+        total: chekOutTotal,
+        currencyCode: cartValues[0]?.countryCode,
+      },
     };
-  }, []);
-
+    try {
+      const res = await orderCheckOut(payLoad).unwrap();
+      window.location = res.paymentLink;
+    } catch (error) {
+      errorToast(error?.message);
+    }
+  };
   const showPayment = () => {
     const [firstName, ...lastNameParts] = customerDetails.name.split(" ");
     const lastName = lastNameParts.join(" ");
@@ -145,39 +148,57 @@ const Cart = () => {
         apiKey: import.meta.env.VITE_ALATPAY_API_KEY,
         businessId: import.meta.env.VITE_ALATPAY_BUSINESS_ID,
         email: customerDetails?.email,
-        phone: customerDetails?.phone, // null
+        phone: customerDetails?.phone,
         firstName: firstName,
         lastName: lastName,
         metaData: null,
-        // currency: cartValues[0]?.countryCode,
-        currency: "USD",
+        currency: cartValues[0]?.countryCode,
         amount: chekOutTotal,
         onTransaction: function (response) {
-          console.log("API response is oprned", response);
-          //TODO: success response will lead to creating an order from the backend, once that is done we proceed to order history page and clear the cart
+          console.log("the resp", response);
+          forAlatOrder(response);
+          closePayment();
         },
-        onClose: function (res) {
-          console.log("Payment gateway is closed", res);
-          // TODO: NOTHING
+        onClose: function () {
+          setPaymentPopup(null);
         },
       });
       popup.show();
+      setPaymentPopup(popup);
     } else {
-      console.error("Alatpay is not defined");
-      // if AlATPAY IS UNDEEFINED THEN WE IUSE FLUTTER WAVE payment gatEway
+      errorToast("Selected payment method not available");
+    }
+  };
+  const closePayment = () => {
+    if (paymentPopup) {
+      paymentPopup.close();
+      setPaymentPopup(null); // Clear the reference after closing
+    }
+  };
+  const forAlatOrder = async (alatResponse) => {
+    try {
+      const payLoad = {
+        method: "alart_pay",
+        response: alatResponse,
+      };
+      const res = await orderCheckOut(payLoad).unwrap();
+      successToast(res?.message);
+      window.location = "https://foodsbymomi.com/orders";
+    } catch (error) {
+      errorToast(error?.message);
     }
   };
 
   return (
     <>
-      {isLoading || loading2 || isClearing ? (
+      {isLoading || loading2 || isClearing || isflutterwave ? (
         <div className="modal">
           <BarsLoader color={""} height={50} />
         </div>
       ) : (
         ""
       )}
-      {isLoading || loading2 || isClearing ? (
+      {isLoading || loading2 || isClearing || isflutterwave ? (
         <div className="modal-backdrop"></div>
       ) : (
         ""
@@ -227,7 +248,7 @@ const Cart = () => {
 
                 <Button
                   btnText="Clear Cart"
-                  btnStyle={`lg:text-base text-xs bg-red-600 text-white`}
+                  btnStyle={`lg:text-base text-xs bg-[#ff0000] text-white`}
                   btnClick={clearCart}
                 />
               </div>
@@ -278,12 +299,20 @@ const Cart = () => {
                   </p>
                 </div>
 
-                <button
-                  className="px-8 py-3 bg-primary checkoutBtn w-full mt-10 mb-5 text-mainWhite"
-                  onClick={showPayment}
-                >
-                  Proceed To Checkout
-                </button>
+                <div className="mt-10 mb-5 flex md:flex-row flex-col gap-5">
+                  <button
+                    className="px-8 py-3 bg-[#fb9129] checkoutBtn w-full text-mainWhite"
+                    onClick={fluterwaveCheckout}
+                  >
+                    Flutterwave
+                  </button>
+                  <button
+                    className="px-8 py-3 bg-[#bf0926] checkoutBtn w-full text-mainWhite"
+                    onClick={showPayment}
+                  >
+                    AlatPay
+                  </button>
+                </div>
               </div>
             </div>
           </div>

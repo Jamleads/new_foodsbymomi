@@ -1,8 +1,7 @@
 export const countryPrice = (product, country) => {
-  // if (country === "Nigeria") {
-  //   return product?.priceNgn;
-  // } else
-  if (country === "Ghana") {
+  if (country === "Nigeria") {
+    return product?.priceNgn;
+  } else if (country === "Ghana") {
     return product?.priceGhana;
   } else if (country === "United Kingdom") {
     return product?.priceUk;
@@ -15,10 +14,9 @@ export const countryPrice = (product, country) => {
   }
 };
 export const countryCurrency = (product, country) => {
-  // if (country === "Nigeria") {
-  //   return product?.nigeriaCode;
-  // } else
-  if (country === "Ghana") {
+  if (country === "Nigeria") {
+    return product?.nigeriaCode;
+  } else if (country === "Ghana") {
     return product?.ghanaCode;
   } else if (country === "United Kingdom") {
     return product?.ukCode;

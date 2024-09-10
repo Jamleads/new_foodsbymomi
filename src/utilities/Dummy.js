@@ -1,12 +1,3 @@
-import {
-  FoodBanner1,
-  LondonTradefair,
-  Product1,
-  // Product2,
-  // Product3,
-  // Product4,
-} from "../assets";
-
 export const AdvertMessage = [
   {
     id: 1,

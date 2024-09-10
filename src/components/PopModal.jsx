@@ -50,7 +50,7 @@ const PopModal = ({ openForm }) => {
               us as we celebrate culture, community, and the joy of food!{" "}
               <span className="text-secondary underline">
                 <a
-                  href="https://www.instagram.com/foodsbymomi?igsh=bmMxbGxvMTV6OWN1"
+                  href="https://www.instagram.com/reel/C_sL1NfoSWS/?igsh=eTdrdHphdXNqOHg="
                   target="_blank"
                 >
                   Instagram

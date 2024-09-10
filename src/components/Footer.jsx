@@ -179,7 +179,7 @@ const Footer = () => {
               <FaLinkedin className="text-3xl text-primary font-bold" />
             </a>
             <a
-              href="https://www.instagram.com/foodsbymomi?igsh=bmMxbGxvMTV6OWN1"
+              href="https://www.instagram.com/reel/C_sL1NfoSWS/?igsh=eTdrdHphdXNqOHg="
               target="_blank"
             >
               <FaInstagramSquare className="text-3xl text-primary font-bold" />
