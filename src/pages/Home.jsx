@@ -80,7 +80,6 @@ const Home = () => {
     dispatch(selectProduct(product));
   };
 
-  console.log("the products", allProduct);
   const handleCategoryClick = (category) => {
     const theArray = allProduct.filter((item) =>
       item.categories.includes(category)
@@ -101,106 +100,8 @@ const Home = () => {
       {isAdding ? <div className="modal-backdrop"></div> : ""}
 
       <Carousel />
+
       <div className="relative lg:w-[80%] mx-auto my-20 overflow-x-hidden flex flex-col gap-20">
-        {/* <div>
-          <h1 className="text-2xl font-bold mb-6">RECENTLY ADDED</h1>
-          <div
-            className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
-          >
-            {newlyAdded.map((product) => (
-              <div key={product.id}>
-                <ProductCard
-                  {...product}
-                  // productImg={product.imageUrl}
-                  price={countryPrice(product, country)}
-                  countryCode={countryCurrency(product, country)}
-                  onClickCart={() => addToCart(product)}
-                  onClickFav={() => addToFav(product)}
-                  onClickToDetails={() => handleProductClick(product)}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-center mt-10">
-            <Link to="shop">
-              <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
-                Load More
-              </button>
-            </Link>
-          </div>
-        </div> */}
-
-        <div>
-          <h1 className="text-2xl font-bold mb-6">Meat and Seafoods</h1>
-          <div
-            className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
-          >
-            {allProduct
-              .filter((item) => item.categories?.includes("meat and seafood"))
-              .map((product) => (
-                <div key={product.id}>
-                  <ProductCard
-                    {...product}
-                    productImg={product.imageUrl}
-                    price={countryPrice(product, country)}
-                    countryCode={countryCurrency(product, country)}
-                    onClickCart={() => addToCart(product)}
-                    onClickFav={() => addToFav(product)}
-                    onClickToDetails={() => handleProductClick(product)}
-                  />
-                </div>
-              ))}
-          </div>
-
-          <div className="flex items-center justify-center mt-10">
-            <Link
-              to={`/meat and seafood`}
-              onClick={() => handleCategoryClick("meat and seafood")}
-            >
-              <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
-                Load More
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        <div>
-          <h1 className="text-2xl font-bold mb-6">Condiments</h1>
-          <div
-            className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
-          >
-            {allProduct
-              .filter((item) => item.categories?.includes("condiments"))
-              .slice(0, 4)
-              .map((product, index) => (
-                <div key={index}>
-                  <ProductCard
-                    {...product}
-                    productImg={product.imageUrl}
-                    price={countryPrice(product, country)}
-                    countryCode={countryCurrency(product, country)}
-                    // Actions
-                    onClickCart={() => addToCart(product)}
-                    onClickFav={() => addToFav(product)}
-                    onClickToDetails={() => handleProductClick(product)}
-                  />
-                </div>
-              ))}
-          </div>
-
-          <div className="flex items-center justify-center mt-10">
-            <Link
-              to={`/condiments`}
-              onClick={() => handleCategoryClick("condiments")}
-            >
-              <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
-                Load More
-              </button>
-            </Link>
-          </div>
-        </div>
-
         <div>
           <h1 className="text-2xl font-bold mb-6">Grains and Flours</h1>
           <div
@@ -234,6 +135,76 @@ const Home = () => {
                 Load More
               </button>
             </Link>
+          </div>
+
+          <div>
+            <h1 className="text-2xl font-bold mb-6">Condiments</h1>
+            <div
+              className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
+            >
+              {allProduct
+                .filter((item) => item.categories?.includes("condiments"))
+                .slice(0, 4)
+                .map((product, index) => (
+                  <div key={index}>
+                    <ProductCard
+                      {...product}
+                      productImg={product.imageUrl}
+                      price={countryPrice(product, country)}
+                      countryCode={countryCurrency(product, country)}
+                      // Actions
+                      onClickCart={() => addToCart(product)}
+                      onClickFav={() => addToFav(product)}
+                      onClickToDetails={() => handleProductClick(product)}
+                    />
+                  </div>
+                ))}
+            </div>
+
+            <div className="flex items-center justify-center mt-10">
+              <Link
+                to={`/condiments`}
+                onClick={() => handleCategoryClick("condiments")}
+              >
+                <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
+                  Load More
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-2xl font-bold mb-6">Spicies</h1>
+            <div
+              className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
+            >
+              {allProduct
+                .filter((item) => item.categories?.includes("Spicies"))
+                .map((product) => (
+                  <div key={product.id}>
+                    <ProductCard
+                      {...product}
+                      productImg={product.imageUrl}
+                      price={countryPrice(product, country)}
+                      countryCode={countryCurrency(product, country)}
+                      onClickCart={() => addToCart(product)}
+                      onClickFav={() => addToFav(product)}
+                      onClickToDetails={() => handleProductClick(product)}
+                    />
+                  </div>
+                ))}
+            </div>
+
+            <div className="flex items-center justify-center mt-10">
+              <Link
+                to={`/Spicies`}
+                onClick={() => handleCategoryClick("Spicies")}
+              >
+                <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
+                  Load More
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

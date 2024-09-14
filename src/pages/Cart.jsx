@@ -155,7 +155,6 @@ const Cart = () => {
         currency: cartValues[0]?.countryCode,
         amount: chekOutTotal,
         onTransaction: function (response) {
-          console.log("the resp", response);
           forAlatOrder(response);
           closePayment();
         },

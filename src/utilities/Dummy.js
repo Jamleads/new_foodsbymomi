@@ -44,18 +44,18 @@ export const AdvertMessage = [
 ];
 
 export const sliderCard = [
-  {
-    id: 1,
-    style: "carousel1",
-    link: "https://foodsbymomi.bumpa.shop/",
-    productImg:
-      "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723773284/WhatsApp_Image_2024-08-13_at_15.23.02_py1f5f.jpg",
+  // {
+  //   id: 1,
+  //   style: "carousel1",
+  //   link: "https://foodsbymomi.bumpa.shop/",
+  //   productImg:
+  //     "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723773284/WhatsApp_Image_2024-08-13_at_15.23.02_py1f5f.jpg",
 
-    collectionTitle:
-      "Wema Bank Partners with Foods by Momi for London Tradefair",
-    collectionDecription:
-      "Wema Bank, a leading financial institution, teams up with Foods by Momi to bring the rich flavors of Africa to London. This exciting collaboration highlights the global reach of both brands as they set the stage to Unwrap Africa's Richness at an exclusive event in the heart of London. Stay tuned for a unique experience that blends financial excellence with culinary heritage",
-  },
+  //   collectionTitle:
+  //     "Wema Bank Partners with Foods by Momi for London Tradefair",
+  //   collectionDecription:
+  //     "Wema Bank, a leading financial institution, teams up with Foods by Momi to bring the rich flavors of Africa to London. This exciting collaboration highlights the global reach of both brands as they set the stage to Unwrap Africa's Richness at an exclusive event in the heart of London. Stay tuned for a unique experience that blends financial excellence with culinary heritage",
+  // },
   {
     id: 2,
     style: "carousel1",

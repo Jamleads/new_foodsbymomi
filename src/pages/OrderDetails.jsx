@@ -11,8 +11,7 @@ const OrderDetails = () => {
   useEffect(() => {
     const orderDetails = async () => {
       try {
-        const res = await triggerGetOrderDetails(id).unwrap();
-        console.log("the res for order details", res);
+        await triggerGetOrderDetails(id).unwrap();
       } catch (error) {
         errorToast(error?.message);
       }

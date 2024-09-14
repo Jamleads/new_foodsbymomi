@@ -11,7 +11,7 @@ const AboutUs = () => {
       </div>
 
       <p className="my-5 font-light text-xl text-[#000] leading-10">
-        Food By Momi is an African Food Shop based London. We specialise in the
+        FoodsByMomi is an African Food Shop based London. We specialise in the
         sale and distribution of wholesale and retail African and Caribbean food
         products. We sell both online and in-store. Our online African food shop
         also offers a next day UK wide delivery service{" "}
@@ -29,7 +29,7 @@ const AboutUs = () => {
       </div>
 
       <p className="my-5 font-light text-xl text-[#000] leading-10">
-        Food By Momi is an African Food Shop based London. We specialise in the
+        FoodsByMomi is an African Food Shop based London. We specialise in the
         sale and distribution of wholesale and retail African and Caribbean food
         products. We sell both online and in-store. Our online African food shop
         also offers a next day UK wide delivery service{" "}

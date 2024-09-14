@@ -13,7 +13,6 @@ const Order = () => {
 
   const navigate = useNavigate();
   const [allOrders, setAllOrders] = useState(null);
-  console.log("....", allOrders);
   const { data } = useGetAllOrdersQuery();
   useEffect(() => {
     if (data) {

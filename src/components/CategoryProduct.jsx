@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { addFav } from "../features/FavSlice";
 import BarsLoader from "../utilities/BarsLoader";
@@ -7,31 +7,42 @@ import { setAuthFormOpen } from "../features/AuthSlice";
 import { useAddItemToCartMutation } from "../services/cart";
 import { duplicateCheck } from "../utilities/DuplicateCheck";
 import { selectProduct } from "../features/SingleProuctSlice";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { errorToast, successToast, warnToast } from "../utilities/ToastMessage";
 import { countryCurrency, countryPrice } from "../utilities/PriceSelection";
 
 const CategoryProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useParams();
 
-  const cart = useSelector((state) => state.cart?.cartList);
-  const favorite = useSelector((state) => state.fav);
-  const catProducts = useSelector(
-    (state) => state.categoryProduct.selectedCatProduct
-  );
-  const country = useSelector(
-    (state) => state.location?.location?.country?.name
-  );
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const theState = useSelector((state) => state);
+  const { refetchCart } = useOutletContext();
+  const [addItemToCart, { isLoading: isAdding }] = useAddItemToCartMutation();
+
+  const favorite = theState.fav;
+  const cart = theState.cart?.cartList;
+  const allProducts = theState.allProducts.allProducts;
+  const isAuthenticated = theState.auth.isAuthenticated;
+  const country = theState.location?.location?.country?.name;
+  const catProducts = theState.categoryProduct.selectedCatProduct;
+
+  const initial = catProducts?.categoryProducts;
+  const [productToDisplay, setProductToDisplay] = useState(initial);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    if (!initial) {
+      const filteredProducts = allProducts.filter((item) =>
+        item.categories?.includes(location.categories)
+      );
+      setProductToDisplay(filteredProducts);
+    }
+  }, [allProducts, initial, location]);
 
   // ///////// CART ///////
-  const [addItemToCart, { isLoading: isAdding }] = useAddItemToCartMutation();
-  const { refetchCart } = useOutletContext();
   const addToCart = async (product) => {
     const isDuplicate = duplicateCheck(cart, product);
     if (!isAuthenticated) {
@@ -94,19 +105,22 @@ const CategoryProduct = () => {
         <div
           className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
         >
-          {catProducts?.categoryProducts?.map((product, index) => (
-            <div key={[index]}>
-              <ProductCard
-                {...product}
-                productImg={product?.imageUrl}
-                price={countryPrice(product, country)}
-                countryCode={countryCurrency(product, country)}
-                onClickCart={() => addToCart(product)}
-                onClickFav={() => addToFav(product)}
-                onClickToDetails={() => handleProductClick(product)}
-              />
-            </div>
-          ))}
+          {productToDisplay &&
+            (catProducts?.categoryProducts || productToDisplay).map(
+              (product, index) => (
+                <div key={[index]}>
+                  <ProductCard
+                    {...product}
+                    productImg={product?.imageUrl}
+                    price={countryPrice(product, country)}
+                    countryCode={countryCurrency(product, country)}
+                    onClickCart={() => addToCart(product)}
+                    onClickFav={() => addToFav(product)}
+                    onClickToDetails={() => handleProductClick(product)}
+                  />
+                </div>
+              )
+            )}
         </div>
       </div>
     </>

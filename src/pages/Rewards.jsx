@@ -34,11 +34,9 @@ const Rewards = () => {
   return (
     <div className="lg:w-[70%] lg:px-0 px-5 mx-auto py-10">
       <div>
-        <h1 className=" text-primary text-xl font-bold">
-          Food By Momi Rewards
-        </h1>
+        <h1 className=" text-primary text-xl font-bold">FoodsByMomi Rewards</h1>
         <p className="my-5 font-light text-xl text-[#000] leading-10">
-          Get rewarded for shoping on Food By Momi, below are various categories
+          Get rewarded for shoping on FoodsByMomi, below are various categories
           of rewards available for new and existing customers.
         </p>
       </div>

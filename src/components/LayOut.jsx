@@ -36,7 +36,6 @@ const LayOutKid = () => {
   const locationStatus = theState?.location.status;
   const allProducts = theState?.allProducts.allProducts;
   const authFormOpen = theState?.auth.authFormOpen;
-  console.log("theState", theState);
 
   useEffect(() => {
     dispatch(getLocationByIp());
@@ -91,7 +90,7 @@ const LayOutKid = () => {
         </div>
       ) : (
         <div className={`relative w-full`}>
-          {!isAuthenticated && (
+          {/* {!isAuthenticated && (
             <div
               className={`${
                 pathname !== "/waitlist" && pathname !== "/shop" && popUp
@@ -111,7 +110,7 @@ const LayOutKid = () => {
                   : "hidden"
               } modal-backdrop`}
             ></div>
-          )}
+          )} */}
 
           <div className="">
             <Nav />
