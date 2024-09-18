@@ -30,7 +30,7 @@ const CarouselCard = ({
             className={`px-8 py-3 bg-primary text-mainWhite ${style}`}
             onClick={onClick}
           >
-            Check it out
+            Order Now
           </button>
         </div>
 
@@ -39,7 +39,7 @@ const CarouselCard = ({
             <img
               src={productImg}
               alt="collection of Prouct"
-              className="w-full"
+              className="w-[80%]"
             />
           </div>
           <div className="colection-bolb absolute top-0 right-12 w-[480px] h-[480px] bg-[#a8cc4515] mix-blend-multiply rounded-full"></div>

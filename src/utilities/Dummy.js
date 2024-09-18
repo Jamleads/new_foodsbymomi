@@ -56,17 +56,17 @@ export const sliderCard = [
   //   collectionDecription:
   //     "Wema Bank, a leading financial institution, teams up with Foods by Momi to bring the rich flavors of Africa to London. This exciting collaboration highlights the global reach of both brands as they set the stage to Unwrap Africa's Richness at an exclusive event in the heart of London. Stay tuned for a unique experience that blends financial excellence with culinary heritage",
   // },
-  {
-    id: 2,
-    style: "carousel1",
-    link: "https://foodsbymomi.bumpa.shop/",
-    productImg:
-      "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723433560/London_tradefair_zgikwq.jpg",
+  // {
+  //   id: 2,
+  //   style: "carousel1",
+  //   link: "https://foodsbymomi.bumpa.shop/",
+  //   productImg:
+  //     "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723433560/London_tradefair_zgikwq.jpg",
 
-    collectionTitle: "FOODSBYMOMI AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
-    collectionDecription:
-      "We are thrilled to announce that FoodsByMomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
-  },
+  //   collectionTitle: "FOODSBYMOMI AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
+  //   collectionDecription:
+  //     "We are thrilled to announce that FoodsByMomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
+  // },
   {
     id: 3,
     style: "carousel1",
