@@ -24,6 +24,7 @@ const Home = () => {
   const cart = theState?.cart?.cartList;
   const favorite = theState?.fav;
   const isAuthenticated = theState.auth.isAuthenticated;
+  const categories = theState?.categoryProduct?.allcategories;
   const [addItemToCart, { isLoading: isAdding }] = useAddItemToCartMutation();
 
   useEffect(() => {
@@ -103,41 +104,82 @@ const Home = () => {
 
       <div className="relative lg:w-[80%] mx-auto my-20 overflow-x-hidden flex flex-col gap-20">
         <div>
-          <h1 className="text-2xl font-bold mb-6">Grains and Flours</h1>
-          <div
-            className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
-          >
-            {allProduct
-              .filter((item) => item.categories?.includes("Grains and Flours"))
-              .slice(0, 4)
-              .map((product, index) => (
-                <div key={index}>
-                  <ProductCard
-                    {...product}
-                    productImg={product.imageUrl}
-                    price={countryPrice(product, country)}
-                    countryCode={countryCurrency(product, country)}
-                    // Actions
-                    onClickCart={() => addToCart(product)}
-                    onClickFav={() => addToFav(product)}
-                    onClickToDetails={() => handleProductClick(product)}
-                  />
-                </div>
-              ))}
-          </div>
-
-          <div className="flex items-center justify-center mt-10">
-            <Link
-              to={`/Grains and Flours`}
-              onClick={() => handleCategoryClick("Grains and Flours")}
+          <div>
+            <h1 className="text-2xl font-bold mb-6">Grains and Flours</h1>
+            <div
+              className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
             >
-              <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
-                Load More
-              </button>
-            </Link>
+              {allProduct
+                .filter((item) =>
+                  item.categories?.includes("Grains and Flours")
+                )
+                .slice(9, 13)
+                .map((product, index) => (
+                  <div key={index}>
+                    <ProductCard
+                      {...product}
+                      productImg={product.imageUrl}
+                      price={countryPrice(product, country)}
+                      countryCode={countryCurrency(product, country)}
+                      // Actions
+                      onClickCart={() => addToCart(product)}
+                      onClickFav={() => addToFav(product)}
+                      onClickToDetails={() => handleProductClick(product)}
+                    />
+                  </div>
+                ))}
+            </div>
+
+            <div className="flex items-center justify-center mt-10">
+              <Link
+                to={`/Grains and Flours`}
+                onClick={() => handleCategoryClick("Grains and Flours")}
+              >
+                <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
+                  Load More
+                </button>
+              </Link>
+            </div>
           </div>
 
           <div>
+            {categories.map((category, idx) => (
+              <div key={idx} className="my-40">
+                <h1 className="text-2xl font-bold my-6">{category.name}</h1>
+                <div className="lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10">
+                  {allProduct
+                    .filter((item) => item.categories?.includes(category.name))
+                    .slice(0, 4) // Display only 4 products per category
+                    .map((product, index) => (
+                      <div key={index}>
+                        <ProductCard
+                          {...product}
+                          productImg={product.imageUrl}
+                          price={countryPrice(product, country)}
+                          countryCode={countryCurrency(product, country)}
+                          // Actions
+                          onClickCart={() => addToCart(product)}
+                          onClickFav={() => addToFav(product)}
+                          onClickToDetails={() => handleProductClick(product)}
+                        />
+                      </div>
+                    ))}
+                </div>
+                <div className="flex items-center justify-center mt-10">
+                  <Link
+                    to={`/${category.name}`}
+                    onClick={() => handleCategoryClick(category.name)}
+                  >
+                    <button className="py-2 px-5 bg-primary shadow-2xl rounded-md text-white font-bold">
+                      Load More
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* <div>
             <h1 className="text-2xl font-bold mb-6">Condiments</h1>
             <div
               className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
@@ -205,7 +247,7 @@ const Home = () => {
                 </button>
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
