@@ -13,7 +13,6 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useParams();
-  console.log("location////", location);
 
   const theState = useSelector((state) => state);
   const cart = theState?.cart?.cartList;
@@ -37,8 +36,6 @@ const ProductDetails = () => {
       setSingleProduct(filteredProducts);
     }
   }, [allProducts, initial, location]);
-
-  console.log("singleProduct...", singleProduct);
 
   const [addItemToCart, { isLoading: isAdding }] = useAddItemToCartMutation();
   const { refetchCart } = useOutletContext();

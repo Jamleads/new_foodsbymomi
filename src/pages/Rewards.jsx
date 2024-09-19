@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import Accordion from "../components/Accorion";
+import { useGetReferralQuery, useGetVoucherQuery } from "../services/profile";
 const Rewards = () => {
   const accordionItems = [
     {
@@ -31,13 +33,24 @@ const Rewards = () => {
     },
   ];
 
+  const { data, isLoading } = useGetReferralQuery();
+  const { data: voucher, isLoading: isLoadingVucheer } = useGetVoucherQuery();
+
+  useEffect(() => {
+    if (!isLoading) {
+      console.log("peopl i refered", data);
+    }
+
+    if (!isLoadingVucheer) {
+      console.log("My voucher", voucher);
+    }
+  }, [data, isLoading, isLoadingVucheer, voucher]);
   return (
     <div className="lg:w-[70%] lg:px-0 px-5 mx-auto py-10">
       <div>
         <h1 className=" text-primary text-xl font-bold">FoodsByMomi Rewards</h1>
         <p className="my-5 font-light text-xl text-[#000] leading-10">
-          Get rewarded for shoping on FoodsByMomi, below are various categories
-          of rewards available for new and existing customers.
+          Get rewarded when you refer your frined to FoodsByMomi, copy your referal code bellow 
         </p>
       </div>
       <Accordion items={accordionItems} />

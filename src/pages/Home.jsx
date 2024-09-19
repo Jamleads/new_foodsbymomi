@@ -105,7 +105,9 @@ const Home = () => {
       <div className="relative lg:w-[80%] mx-auto my-20 overflow-x-hidden flex flex-col gap-20">
         <div>
           <div>
-            <h1 className="text-2xl font-bold mb-6">Grains and Flours</h1>
+            <h1 className="text-2xl font-bold mb-6 capitalize">
+              Grains and Flours
+            </h1>
             <div
               className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
             >
@@ -145,7 +147,9 @@ const Home = () => {
           <div>
             {categories.map((category, idx) => (
               <div key={idx} className="my-40">
-                <h1 className="text-2xl font-bold my-6">{category.name}</h1>
+                <h1 className="text-2xl font-bold my-6 capitalize">
+                  {category.name}
+                </h1>
                 <div className="lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10">
                   {allProduct
                     .filter((item) => item.categories?.includes(category.name))
