@@ -108,9 +108,7 @@ const Home = () => {
             <h1 className="text-2xl font-bold mb-6 capitalize">
               Grains and Flours
             </h1>
-            <div
-              className={`lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10`}
-            >
+            <div className="lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-5">
               {allProduct
                 .filter((item) =>
                   item.categories?.includes("Grains and Flours")
@@ -146,11 +144,11 @@ const Home = () => {
 
           <div>
             {categories.map((category, idx) => (
-              <div key={idx} className="my-20">
+              <div key={idx} className="my-10">
                 <h1 className="text-2xl font-bold my-6 capitalize">
                   {category.name}
                 </h1>
-                <div className="lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-10">
+                <div className="lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-5">
                   {allProduct
                     .filter((item) => item.categories?.includes(category.name))
                     .slice(0, 4) // Display only 4 products per category
