@@ -146,7 +146,7 @@ const Home = () => {
 
           <div>
             {categories.map((category, idx) => (
-              <div key={idx} className="my-40">
+              <div key={idx} className="my-20">
                 <h1 className="text-2xl font-bold my-6 capitalize">
                   {category.name}
                 </h1>
