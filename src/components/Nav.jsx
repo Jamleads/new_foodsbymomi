@@ -260,7 +260,7 @@ const Nav = () => {
             )}
             {/* <li>
               <a
-                href="https://pricelist.foodsbymomi.com/wholesales_pricelist.pdf"
+                href="https://pricelist.Foodsbymomi.com/wholesales_pricelist.pdf"
                 target="_blank"
               >
                 Wholesales Price List
@@ -268,7 +268,7 @@ const Nav = () => {
             </li>
             <li>
               <a
-                href="https://pricelist.foodsbymomi.com/retail_pricelist.pdf"
+                href="https://pricelist.Foodsbymomi.com/retail_pricelist.pdf"
                 target="_blank"
               >
                 Retail Price List
@@ -333,7 +333,7 @@ const Nav = () => {
                 </li>
                 {/* <li>
                   <a
-                    href="https://pricelist.foodsbymomi.com/wholesales_pricelist.pdf"
+                    href="https://pricelist.Foodsbymomi.com/wholesales_pricelist.pdf"
                     target="_blank"
                   >
                     Wholesales Price List
@@ -341,7 +341,7 @@ const Nav = () => {
                 </li>
                 <li>
                   <a
-                    href="https://pricelist.foodsbymomi.com/retail_pricelist.pdf"
+                    href="https://pricelist.Foodsbymomi.com/retail_pricelist.pdf"
                     target="_blank"
                   >
                     Retail Price List

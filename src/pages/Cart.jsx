@@ -182,7 +182,7 @@ const Cart = () => {
       };
       const res = await orderCheckOut(payLoad).unwrap();
       successToast(res?.message);
-      window.location = "https://foodsbymomi.com/orders";
+      window.location = "https://Foodsbymomi.com/orders";
     } catch (error) {
       errorToast(error?.message);
     }

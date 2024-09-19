@@ -2,7 +2,7 @@ const TraideFair = () => {
   return (
     <div
       className="modal lg:w-[70%] w-[90%] mx-auto shadow-2xl py-5"
-      onClick={() => (window.location = "https://foodsbymomi.bumpa.shop/")}
+      onClick={() => (window.location = "https://Foodsbymomi.bumpa.shop/")}
     >
       <div className="flex md:flex-row flex-col-reverse w-full px-5">
         <div className="md:w-1/3 w-full flex flex-col justify-center items-center">
@@ -11,7 +11,7 @@ const TraideFair = () => {
           </div> */}
           <div className="flex flex-col justify-center items-center md:gap-5">
             <p>
-              We are thrilled to announce that FoodsByMomi will be at the <br />
+              We are thrilled to announce that Foodsbymomi will be at the <br />
               <span className="md:text-4xl text-2xl text-primary font-bold">
                 Naija Brand Chic Tradefair in London!
               </span>
@@ -20,7 +20,7 @@ const TraideFair = () => {
               <span
                 className="text-secondary font-bold underline text-lg"
                 onClick={() =>
-                  (window.location = "https://foodsbymomi.bumpa.shop/")
+                  (window.location = "https://Foodsbymomi.bumpa.shop/")
                 }
               >
                 check out our online showcase

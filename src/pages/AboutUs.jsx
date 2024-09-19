@@ -6,12 +6,12 @@ const AboutUs = () => {
       <div className="flex gap-5">
         <img src={LocationIcon} alt="" />
         <h1 className=" text-xl font-semibold text-primary">
-          FoodsbyMomi Ltd 128, City Road London Ec1v2nx +44 20 8133
+          Foodsbymomi Ltd 128, City Road London Ec1v2nx +44 20 8133
         </h1>
       </div>
 
       <p className="my-5 font-light text-xl text-[#000] leading-10">
-        FoodsByMomi is an African Food Shop based London. We specialise in the
+        Foodsbymomi is an African Food Shop based London. We specialise in the
         sale and distribution of wholesale and retail African and Caribbean food
         products. We sell both online and in-store. Our online African food shop
         also offers a next day UK wide delivery service{" "}
@@ -29,7 +29,7 @@ const AboutUs = () => {
       </div>
 
       <p className="my-5 font-light text-xl text-[#000] leading-10">
-        FoodsByMomi is an African Food Shop based London. We specialise in the
+        Foodsbymomi is an African Food Shop based London. We specialise in the
         sale and distribution of wholesale and retail African and Caribbean food
         products. We sell both online and in-store. Our online African food shop
         also offers a next day UK wide delivery service{" "}

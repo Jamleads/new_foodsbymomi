@@ -126,7 +126,7 @@ const FormModal = () => {
 
             <div className="">
               <label htmlFor="location">
-                How did you hear about FoodsByMomi?
+                How did you hear about Foodsbymomi?
               </label>
               <br />
               <select

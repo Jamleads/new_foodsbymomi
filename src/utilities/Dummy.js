@@ -47,7 +47,7 @@ export const sliderCard = [
   // {
   //   id: 1,
   //   style: "carousel1",
-  //   link: "https://foodsbymomi.bumpa.shop/",
+  //   link: "https://Foodsbymomi.bumpa.shop/",
   //   productImg:
   //     "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723773284/WhatsApp_Image_2024-08-13_at_15.23.02_py1f5f.jpg",
 
@@ -59,13 +59,13 @@ export const sliderCard = [
   // {
   //   id: 2,
   //   style: "carousel1",
-  //   link: "https://foodsbymomi.bumpa.shop/",
+  //   link: "https://Foodsbymomi.bumpa.shop/",
   //   productImg:
   //     "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723433560/London_tradefair_zgikwq.jpg",
 
-  //   collectionTitle: "FOODSBYMOMI AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
+  //   collectionTitle: "Foodsbymomi AT NAIJA BRAND CHICK TRADEFAIR IN LONDON",
   //   collectionDecription:
-  //     "We are thrilled to announce that FoodsByMomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
+  //     "We are thrilled to announce that Foodsbymomi will be at the Naija Brand Chic Tradefair in London! Join us at the event, or if you can not make it",
   // },
   {
     id: 3,
@@ -74,9 +74,9 @@ export const sliderCard = [
     productImg:
       "https://res.cloudinary.com/dkmddgqsl/image/upload/v1723433584/food_banner1_x7zct1.jpg",
     collectionTitle:
-      "FoodsbyMomi: Premium Quality Foods for Households and Businesses Worldwide",
+      "Foodsbymomi: Premium Quality Foods for Households and Businesses Worldwide",
     collectionDecription:
-      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. FoodsbyMomi products are perfect for both household consumers and businesses.",
+      "We provide hygienically processed and packaged, premium FDA-approved foods for the global export market, fully compliant with all regulatory standards. Our offerings include cost-effective B2B solutions such as contract manufacturing and white labeling, tailored for African and Caribbean stores worldwide, as well as small-scale food ventures. Foodsbymomi products are perfect for both household consumers and businesses.",
   },
 ];
 

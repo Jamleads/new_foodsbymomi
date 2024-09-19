@@ -12,7 +12,7 @@ const PopModal = ({ openForm }) => {
           </div>
           <div className="content flex flex-col gap-5">
             <p className="md:text-base text-xs">
-              Get ready for an exciting culinary journey! FoodsByMomi is
+              Get ready for an exciting culinary journey! Foodsbymomi is
               thrilled to introduce you to the vibrant and diverse flavors of
               African cuisine. Our brand-new line of delicious products is
               launching soon, bringing you authentic tastes straight from the
@@ -33,8 +33,8 @@ const PopModal = ({ openForm }) => {
               distributor to all African foods shop in USA, Canada, Europe and
               uk, please reach out to us at{" "}
               <span className="text-secondary underline">
-                <a href="mailto: hello@foodsbymomi.com" target="_blank">
-                  hello@foodsbymomi.com.
+                <a href="mailto: hello@Foodsbymomi.com" target="_blank">
+                  hello@Foodsbymomi.com.
                 </a>
               </span>{" "}
               Join our waitlist to be the first to hear about our product

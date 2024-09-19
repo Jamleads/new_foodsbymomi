@@ -46,11 +46,11 @@ const Footer = () => {
             <ul className="flex flex-col gap-3">
               <p className="text-[#8A8FB9] text-sm">Contact Address</p>
               <li className="text-[#8A8FB9] text-sm list-disc">
-                FoodsbyMomi Ltd No 2, Adenuga Street Off Williams Estate ,
+                Foodsbymomi Ltd No 2, Adenuga Street Off Williams Estate ,
                 Surulere Lagos , Nigeria +234-909 011 0000
               </li>
               <li className="text-[#8A8FB9] text-sm list-disc">
-                FoodsbyMomi Ltd 128, City Road London Ec1v2nx +44 20 8133 9447
+                Foodsbymomi Ltd 128, City Road London Ec1v2nx +44 20 8133 9447
               </li>
             </ul>
 
@@ -132,7 +132,7 @@ const Footer = () => {
               </li>
               {/* <li className="text-[#8A8FB9] text-sm">
                 <a
-                  href="https://pricelist.foodsbymomi.com/wholesales_pricelist.pdf"
+                  href="https://pricelist.Foodsbymomi.com/wholesales_pricelist.pdf"
                   target="_blank"
                 >
                   Wholesales Price List
@@ -140,7 +140,7 @@ const Footer = () => {
               </li>
               <li className="text-[#8A8FB9] text-sm">
                 <a
-                  href="https://pricelist.foodsbymomi.com/retail_pricelist.pdf"
+                  href="https://pricelist.Foodsbymomi.com/retail_pricelist.pdf"
                   target="_blank"
                 >
                   Retail Price List
@@ -166,14 +166,14 @@ const Footer = () => {
             &copy;<a href="/">Foodsbymomi</a> - All Rights Reserved
           </p>
           <div className="flex items-center gap-3 rounded-full">
-            <a href="mailto:hello@foodsbymomi.com" target="_blank">
+            <a href="mailto:hello@Foodsbymomi.com" target="_blank">
               <MdAttachEmail className="text-3xl text-primary font-bold" />
             </a>
             <a href="https://wa.me/+447376368788" target="_blank">
               <FaSquareWhatsapp className="text-3xl text-primary font-bold" />
             </a>
             <a
-              href="https://www.linkedin.com/company/foodsbymomi-limited/mycompany/"
+              href="https://www.linkedin.com/company/Foodsbymomi-limited/mycompany/"
               target="_blank"
             >
               <FaLinkedin className="text-3xl text-primary font-bold" />
@@ -184,10 +184,10 @@ const Footer = () => {
             >
               <FaInstagramSquare className="text-3xl text-primary font-bold" />
             </a>
-            <a href="https://x.com/foodsbymomi" target="_blank">
+            <a href="https://x.com/Foodsbymomi" target="_blank">
               <FaSquareXTwitter className="text-3xl text-primary font-bold" />
             </a>
-            <a href="https://www.facebook.com/foodsbymomi" target="_blank">
+            <a href="https://www.facebook.com/Foodsbymomi" target="_blank">
               <FaFacebookSquare className="text-3xl text-primary font-bold" />
             </a>
           </div>
