@@ -26,7 +26,13 @@ const Home = () => {
   const isAuthenticated = theState.auth.isAuthenticated;
   const categories = theState?.categoryProduct?.allcategories;
   const [addItemToCart, { isLoading: isAdding }] = useAddItemToCartMutation();
-
+  const mustShowFirst = [];
+  mustShowFirst.push(
+    allProduct[33],
+    allProduct[100],
+    allProduct[35],
+    allProduct[55]
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -106,31 +112,26 @@ const Home = () => {
         <div>
           <div>
             <h1 className="text-2xl font-bold mb-6 capitalize">
-              Grains and Flours
+              Featured Products
             </h1>
             <div className="lg:px-0 px-5 grid lg:grid-cols-4 grid-cols-2 gap-x-5 gap-y-5">
-              {allProduct
-                .filter((item) =>
-                  item.categories?.includes("Grains and Flours")
-                )
-                .slice(9, 13)
-                .map((product, index) => (
-                  <div key={index}>
-                    <ProductCard
-                      {...product}
-                      productImg={product.imageUrl}
-                      price={countryPrice(product, country)}
-                      countryCode={countryCurrency(product, country)}
-                      // Actions
-                      onClickCart={() => addToCart(product)}
-                      onClickFav={() => addToFav(product)}
-                      onClickToDetails={() => handleProductClick(product)}
-                    />
-                  </div>
-                ))}
+              {mustShowFirst.map((product, index) => (
+                <div key={index}>
+                  <ProductCard
+                    {...product}
+                    productImg={product.imageUrl}
+                    price={countryPrice(product, country)}
+                    countryCode={countryCurrency(product, country)}
+                    // Actions
+                    onClickCart={() => addToCart(product)}
+                    onClickFav={() => addToFav(product)}
+                    onClickToDetails={() => handleProductClick(product)}
+                  />
+                </div>
+              ))}
             </div>
 
-            <div className="flex items-center justify-center mt-10">
+            {/* <div className="flex items-center justify-center mt-10">
               <Link
                 to={`/Grains and Flours`}
                 onClick={() => handleCategoryClick("Grains and Flours")}
@@ -139,7 +140,7 @@ const Home = () => {
                   Load More
                 </button>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div>
