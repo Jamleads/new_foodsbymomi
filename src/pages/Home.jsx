@@ -79,6 +79,7 @@ const Home = () => {
       navigate("/favorite");
     } else {
       dispatch(addFav(product));
+      s;
       successToast("Item added to favourite");
     }
   };
@@ -119,7 +120,7 @@ const Home = () => {
                 <div key={index}>
                   <ProductCard
                     {...product}
-                    productImg={product.imageUrl}
+                    productImg={product?.imageUrl}
                     price={countryPrice(product, country)}
                     countryCode={countryCurrency(product, country)}
                     // Actions
@@ -157,7 +158,7 @@ const Home = () => {
                       <div key={index}>
                         <ProductCard
                           {...product}
-                          productImg={product.imageUrl}
+                          productImg={product?.imageUrl}
                           price={countryPrice(product, country)}
                           countryCode={countryCurrency(product, country)}
                           // Actions

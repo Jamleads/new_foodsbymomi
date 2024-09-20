@@ -74,7 +74,7 @@ const FavProduct = () => {
                 <ProductCard2
                   key={index}
                   {...favProduct}
-                  productImg={favProduct.imageUrl}
+                  productImg={favProduct?.imageUrl}
                   price={countryPrice(favProduct, country)}
                   countryCode={countryCurrency(favProduct, country)}
                   description={favProduct.collectionDecription}
