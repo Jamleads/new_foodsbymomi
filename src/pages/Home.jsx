@@ -79,7 +79,6 @@ const Home = () => {
       navigate("/favorite");
     } else {
       dispatch(addFav(product));
-      s;
       successToast("Item added to favourite");
     }
   };
