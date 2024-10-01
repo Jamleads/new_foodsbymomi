@@ -299,12 +299,12 @@ const Cart = () => {
                 </div>
 
                 <div className="mt-10 mb-5 flex md:flex-row flex-col gap-5">
-                  <button
+                  {/* <button
                     className="px-8 py-3 bg-[#fb9129] checkoutBtn w-full text-mainWhite"
                     onClick={fluterwaveCheckout}
-                  >
+                  > 
                     Flutterwave
-                  </button>
+                  </button> */}
                   <button
                     className="px-8 py-3 bg-[#bf0926] checkoutBtn w-full text-mainWhite"
                     onClick={showPayment}
