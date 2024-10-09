@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Accordion from "../components/Accorion";
 import { useGetReferralQuery, useGetVoucherQuery } from "../services/profile";
 import { PiCopySimple } from "react-icons/pi";
 import { handleCopy } from "../utilities/otherFunction";
 import { useSelector } from "react-redux";
 const Rewards = () => {
+  const [referral, setReferral] = useState(null);
   const accordionItems = [
     {
       title: "Referral",
@@ -18,10 +19,14 @@ const Rewards = () => {
     },
   ];
 
-  const { data } = useGetReferralQuery();
-  const { data: voucher, isLoading } = useGetVoucherQuery();
+  const { data, isLoading } = useGetReferralQuery();
+  const { data: voucher, isLoading: loadingVoucher } = useGetVoucherQuery();
   const referralCode = useSelector((state) => state?.auth?.user?.referralCode);
-
+  useEffect(() => {
+    if (!isLoading) {
+      setReferral(data?.data?.referrals);
+    }
+  }, [isLoading, data]);
   return (
     <div className="lg:w-[70%] lg:px-0 px-5 mx-auto py-10">
       <div className="flex flex-col gap-5">
@@ -42,7 +47,7 @@ const Rewards = () => {
             <PiCopySimple /> Copy
           </button>
         </div>
-        <p>Total friends reffered: {data?.data?.referrals?.length ?? 0}</p>
+        <p>Total friends reffered: {referral?.length}</p>
       </div>
     </div>
   );
