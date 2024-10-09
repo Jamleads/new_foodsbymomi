@@ -21,6 +21,12 @@ export const orderApi = api.injectEndpoints({
         method: "GET",
       }),
     }),
+    checkDicountCode: builder.query({
+      query: (discountCode) => ({
+        url: `/discount/${discountCode}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -28,4 +34,5 @@ export const {
   useOrderCheckOutMutation,
   useGetAllOrdersQuery,
   useLazyGetOrderDetailsQuery,
+  useLazyCheckDicountCodeQuery,
 } = orderApi;

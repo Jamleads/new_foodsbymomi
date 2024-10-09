@@ -21,7 +21,6 @@ const ProductDetails = () => {
   const isAuthenticated = theState.auth.isAuthenticated;
   const allProducts = theState.allProducts.allProducts;
 
-  // // // // // Scroll // // // // //
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -89,8 +88,8 @@ const ProductDetails = () => {
               {(selectedProduct || singleProduct)?.title}
             </p>
             <p className="price text-primary lg:text-2xl font-bold mt-3">
-              {countryCurrency(selectedProduct, country)}{" "}
-              {countryPrice(selectedProduct, country)}
+              {countryCurrency(selectedProduct || singleProduct, country)}{" "}
+              {countryPrice(selectedProduct || singleProduct, country)}
             </p>
 
             <div className="description text-base px-10 my-5 leading-10">
@@ -102,16 +101,6 @@ const ProductDetails = () => {
                 Avalability:{" "}
                 <span className="text-primary font-light">in stock</span>{" "}
               </h1>
-            </div>
-
-            <div className="flex gap-3 my-3">
-              {/* <div className="lg:w-[80px] w-[50px] flex items-center justify-center bg-[#F0EFF2]">
-                <input
-                  type="number"
-                  className="w-1/2 bg-transparent text-center text-primary font-bold"
-                  placeholder="1"
-                />
-              </div> */}
             </div>
 
             <p className="text-primary mt-1">
@@ -126,9 +115,6 @@ const ProductDetails = () => {
               btnStyle={"bg-primary text-white w-full mt-3"}
               btnText={"Add To Cart"}
             />
-            {/* <button className="w-full font-bold text-xl text-white py-2 bg-blue mt-4">
-              Checkout
-            </button> */}
           </div>
         </div>
       </div>

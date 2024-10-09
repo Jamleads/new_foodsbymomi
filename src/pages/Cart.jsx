@@ -11,7 +11,10 @@ import BarsLoader from "../utilities/BarsLoader";
 import { countryCurrency, countryPrice } from "../utilities/PriceSelection";
 import { errorToast, successToast } from "../utilities/ToastMessage";
 import { Link, useOutletContext } from "react-router-dom";
-import { useOrderCheckOutMutation } from "../services/order";
+import {
+  useLazyCheckDicountCodeQuery,
+  useOrderCheckOutMutation,
+} from "../services/order";
 
 const Cart = () => {
   useEffect(() => {
@@ -22,6 +25,9 @@ const Cart = () => {
   const [cartValues, setCartValues] = useState([]);
   const [itemTotalAry, setItemTotalAry] = useState(null);
   const [paymentPopup, setPaymentPopup] = useState(null);
+  const [discountCode, setDiscountCode] = useState(null);
+  const [discountValue, setDiscountValue] = useState(null);
+  const [displayMessage, setDisplayMessage] = useState(null);
 
   const theState = useSelector((state) => state);
   const cart = theState.cart?.cartList;
@@ -68,7 +74,9 @@ const Cart = () => {
 
   const overAllItemTotal = itemTotalAry?.reduce((pre, now) => pre + now, 0);
   const fee = (overAllItemTotal / 100) * 5;
-  const chekOutTotal = overAllItemTotal + fee;
+  const chekOutTotal = discountValue
+    ? ((overAllItemTotal + fee) / 100) * discountValue
+    : overAllItemTotal + fee;
 
   const increaseCount = async (item) => {
     const payLoad = {
@@ -125,27 +133,28 @@ const Cart = () => {
     }
   };
 
-  const fluterwaveCheckout = async () => {
-    const payLoad = {
-      method: "flutterwave",
-      response: {
-        total: chekOutTotal,
-        currencyCode: cartValues[0]?.countryCode,
-      },
-    };
-    try {
-      const res = await orderCheckOut(payLoad).unwrap();
-      window.location = res.paymentLink;
-    } catch (error) {
-      errorToast(error?.message);
-    }
-  };
+  // const fluterwaveCheckout = async () => {
+  //   const payLoad = {
+  //     method: "flutterwave",
+  //     response: {
+  //       total: chekOutTotal,
+  //       currencyCode: cartValues[0]?.countryCode,
+  //     },
+  //   };
+  //   try {
+  //     const res = await orderCheckOut(payLoad).unwrap();
+  //     window.location = res.paymentLink;
+  //   } catch (error) {
+  //     errorToast(error?.message);
+  //   }
+  // };
+
   const showPayment = () => {
     const [firstName, ...lastNameParts] = customerDetails.name.split(" ");
     const lastName = lastNameParts.join(" ");
     if (window.Alatpay) {
       let popup = window.Alatpay.setup({
-        apiKey: import.meta.env.VITE_ALATPAY_API_KEY,
+        apiKey: import.meta.env.VITE_ALATPAY_API_KEY, //TODO: UPDATE SECRET ON GITHUB
         businessId: import.meta.env.VITE_ALATPAY_BUSINESS_ID,
         email: customerDetails?.email,
         phone: customerDetails?.phone,
@@ -168,6 +177,7 @@ const Cart = () => {
       errorToast("Selected payment method not available");
     }
   };
+
   const closePayment = () => {
     if (paymentPopup) {
       paymentPopup.close();
@@ -177,6 +187,7 @@ const Cart = () => {
   const forAlatOrder = async (alatResponse) => {
     try {
       const payLoad = {
+        discount_code: discountCode,
         method: "alart_pay",
         response: alatResponse,
       };
@@ -185,6 +196,25 @@ const Cart = () => {
       window.location = "https://Foodsbymomi.com/orders";
     } catch (error) {
       errorToast(error?.message);
+    }
+  };
+
+  const [checkDicountCode, { isLoading: loadingDiscount }] =
+    useLazyCheckDicountCodeQuery();
+
+  const handleChnage = (e) => {
+    const { value } = e.target;
+    setDiscountCode(value);
+  };
+  const checkDiscountCode = async () => {
+    try {
+      const res = await checkDicountCode(discountCode).unwrap();
+      setDiscountValue(res?.data.discount?.percentage_discounted);
+      setDisplayMessage(
+        `Contratulations! You have been discounted ${res.data.discount.percentage_discounted}% off Your order price`
+      );
+    } catch (error) {
+      setDisplayMessage(error?.data?.message);
     }
   };
 
@@ -298,7 +328,35 @@ const Cart = () => {
                   </p>
                 </div>
 
-                <div className="mt-10 mb-5 flex md:flex-row flex-col gap-5">
+                <div className="my-3">
+                  <label htmlFor="discount_code">Apply discount code</label>
+                  <div className="w-full flex items-center gap-3 border-[1px] border-primary">
+                    <input
+                      type="text"
+                      id="dicount_code"
+                      name="dicount_code"
+                      onChange={(e) => handleChnage(e)}
+                      className=" w-full py-1 px-2 bg-transparent"
+                    />
+                    <button
+                      disabled={loadingDiscount}
+                      className="py-1 px-4 bg-primary text-white"
+                      onClick={checkDiscountCode}
+                    >
+                      {loadingDiscount ? (
+                        <BarsLoader color={"#fff"} height={20} />
+                      ) : (
+                        "Check"
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="my-3">
+                  <p className="text-primary font-bold">{displayMessage}</p>
+                </div>
+
+                <div className="mb-5 flex md:flex-row flex-col gap-5">
                   {/* <button
                     className="px-8 py-3 bg-[#fb9129] checkoutBtn w-full text-mainWhite"
                     onClick={fluterwaveCheckout}
@@ -306,10 +364,11 @@ const Cart = () => {
                     Flutterwave
                   </button> */}
                   <button
+                    disabled={loadingDiscount}
                     className="px-8 py-3 bg-[#bf0926] checkoutBtn w-full text-mainWhite"
                     onClick={showPayment}
                   >
-                    AlatPay
+                    Checkout with Alat Pay
                   </button>
                 </div>
               </div>

@@ -15,6 +15,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasAnAcc, setHasAnAcc] = useState(true);
   const [formstate, setFormstate] = useState({
+    role: "customer",
     name: "",
     email: "",
     password: "",

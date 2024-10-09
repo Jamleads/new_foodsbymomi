@@ -258,6 +258,18 @@ const Nav = () => {
                 </Link>
               </li>
             )}
+            <li>
+              <Link
+                to="rewards"
+                className={
+                  pathname.includes("/rewards")
+                    ? "text-secondary font-bold"
+                    : ""
+                }
+              >
+                Rewards
+              </Link>
+            </li>
             {/* <li>
               <a
                 href="https://pricelist.Foodsbymomi.com/wholesales_pricelist.pdf"
@@ -329,6 +341,18 @@ const Nav = () => {
                     }
                   >
                     Shop
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="rewards"
+                    className={
+                      pathname.includes("/rewards")
+                        ? "text-secondary font-bold"
+                        : ""
+                    }
+                  >
+                    Rewards
                   </Link>
                 </li>
                 {/* <li>
