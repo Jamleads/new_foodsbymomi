@@ -42,7 +42,7 @@ const Rewards = () => {
             <PiCopySimple /> Copy
           </button>
         </div>
-        <p>Total friends reffered: {data?.data?.referrals?.length}</p>
+        <p>Total friends reffered: {data?.data?.referrals?.length ?? 0}</p>
       </div>
     </div>
   );
