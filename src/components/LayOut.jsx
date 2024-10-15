@@ -1,13 +1,13 @@
 import Nav from "./Nav.jsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Footer from "./Footer.jsx";
 import Loader from "./Loader.jsx";
 import store from "../app/store.js";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { getLocationByIp } from "../features/Location.js";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import PopModal from "./PopModal.jsx";
+// import PopModal from "./PopModal.jsx";
 import { useGetAllProductQuery } from "../services/product.js";
 import { setAllProducts } from "../features/AllProductSlice.js";
 import {
@@ -22,10 +22,10 @@ import { setCartList } from "../features/CartSlice.js";
 
 const LayOutKid = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const [popUp, setPopUp] = useState(true);
+  // const [popUp, setPopUp] = useState(true);
   const { data, isLoading } = useGetAllProductQuery();
   const { data: cartData, isFetching, refetch } = useGetCartQuery();
   const { data: categoryData, isLoading: isLoadingCat } =
@@ -49,10 +49,10 @@ const LayOutKid = () => {
   }, [categoryData, dispatch, isLoadingCat]);
 
   useEffect(() => {
-    if (!isFetching) {
+    if (isAuthenticated && !isFetching) {
       dispatch(setCartList(cartData?.cart || cartData?.carts));
     }
-  }, [isFetching, dispatch, cartData]);
+  }, [isAuthenticated, isFetching, dispatch, cartData]);
 
   useEffect(() => {
     if (!isLoading) {

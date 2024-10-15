@@ -18,13 +18,14 @@ const Rewards = () => {
         "Get upto 90% discount off your order when you use our random discount code",
     },
   ];
-
   const { data, isLoading } = useGetReferralQuery();
   const { data: voucher, isLoading: loadingVoucher } = useGetVoucherQuery();
   const referralCode = useSelector((state) => state?.auth?.user?.referralCode);
+  console.log("referals", data);
+  console.log("voucher", voucher);
   useEffect(() => {
     if (!isLoading) {
-      setReferral(data?.data?.referrals);
+      setReferral(data?.data);
     }
   }, [isLoading, data]);
   return (
@@ -47,7 +48,7 @@ const Rewards = () => {
             <PiCopySimple /> Copy
           </button>
         </div>
-        <p>Total friends reffered: {referral?.length}</p>
+        <p>Total friends reffered: {referral?.referrals?.length}</p>
       </div>
     </div>
   );

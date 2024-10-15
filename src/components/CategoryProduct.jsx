@@ -10,6 +10,7 @@ import { selectProduct } from "../features/SingleProuctSlice";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { errorToast, successToast, warnToast } from "../utilities/ToastMessage";
 import { countryCurrency, countryPrice } from "../utilities/PriceSelection";
+import { add } from "../features/CartSlice";
 
 const CategoryProduct = () => {
   const dispatch = useDispatch();
@@ -45,11 +46,13 @@ const CategoryProduct = () => {
   // ///////// CART ///////
   const addToCart = async (product) => {
     const isDuplicate = duplicateCheck(cart, product);
-    if (!isAuthenticated) {
-      dispatch(setAuthFormOpen(true));
-    } else if (isDuplicate) {
+    if (isDuplicate) {
       warnToast("Item already in cart, click + to increace the quantity");
       navigate("/cart");
+    } else if (!isAuthenticated) {
+      // dispatch(setAuthFormOpen(true));
+      dispatch(add(product));
+      successToast("Product added to cart");
     } else {
       try {
         const payLoad = {

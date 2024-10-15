@@ -3,7 +3,7 @@ import {
   useRemoveItemFromCartMutation,
   useUpdateCartMutation,
 } from "../services/cart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
 import CartItem from "../components/CartItem";
@@ -15,12 +15,15 @@ import {
   useLazyCheckDicountCodeQuery,
   useOrderCheckOutMutation,
 } from "../services/order";
+import { setAuthFormOpen } from "../features/AuthSlice";
+import { clear, remove } from "../features/CartSlice";
 
 const Cart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const dispatch = useDispatch();
   const { refetchCart } = useOutletContext();
   const [cartValues, setCartValues] = useState([]);
   const [itemTotalAry, setItemTotalAry] = useState(null);
@@ -32,6 +35,7 @@ const Cart = () => {
   const theState = useSelector((state) => state);
   const cart = theState.cart?.cartList;
   const customerDetails = theState?.auth?.user;
+  const isAuthenticated = theState.auth.isAuthenticated;
   const country = theState.location?.location?.country?.name;
 
   const [removeItemFromCart, { isLoading: loading2 }] =
@@ -40,6 +44,8 @@ const Cart = () => {
   const [triggerClearCart, { isLoading: isClearing }] = useLazyClearCartQuery();
   const [orderCheckOut, { isLoading: isflutterwave }] =
     useOrderCheckOutMutation();
+  const [checkDicountCode, { isLoading: loadingDiscount }] =
+    useLazyCheckDicountCodeQuery();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -50,18 +56,39 @@ const Cart = () => {
       document.body.removeChild(script);
     };
   }, []);
+
+  // useEffect(() => {
+  //   if (cart?.length > 0) {
+  //     setCartValues(
+  //       cart.map((item) => ({
+  //         id: item.id,
+  //         title: item.title,
+  //         quantity: item.quantity || 1,
+  //         productImg: item.imageUrl,
+  //         price: countryPrice(item, country),
+  //         countryCode: countryCurrency(item, country),
+  //         total: countryPrice(item, country) * item.quantity,
+  //       }))
+  //     );
+  //   }
+  // }, [cart, country]);
+
   useEffect(() => {
     if (cart?.length > 0) {
       setCartValues(
-        cart.map((item) => ({
-          id: item.id,
-          title: item.title,
-          quantity: item.quantity,
-          productImg: item.imageUrl,
-          price: countryPrice(item, country),
-          countryCode: countryCurrency(item, country),
-          total: countryPrice(item, country) * item.quantity,
-        }))
+        cart.map((item) => {
+          const quantity = item.quantity || 1; // Default to 1 if quantity doesn't exist
+          const price = countryPrice(item, country);
+          return {
+            id: item.id,
+            title: item.title,
+            quantity,
+            productImg: item.imageUrl,
+            price,
+            countryCode: countryCurrency(item, country),
+            total: price * quantity,
+          };
+        })
       );
     }
   }, [cart, country]);
@@ -79,23 +106,12 @@ const Cart = () => {
     : overAllItemTotal + fee;
 
   const increaseCount = async (item) => {
-    const payLoad = {
-      id: item.id,
-      quantity: item.quantity + 1,
-    };
-    try {
-      await updateCart(payLoad).unwrap();
-      refetchCart();
-      successToast("Cart updated");
-    } catch (error) {
-      errorToast(error?.message);
-    }
-  };
-  const decreaseCount = async (item) => {
-    if (item.quantity > 1) {
+    if (!isAuthenticated) {
+      dispatch(setAuthFormOpen(true));
+    } else {
       const payLoad = {
         id: item.id,
-        quantity: item.quantity - 1,
+        quantity: item.quantity + 1,
       };
       try {
         await updateCart(payLoad).unwrap();
@@ -104,32 +120,59 @@ const Cart = () => {
       } catch (error) {
         errorToast(error?.message);
       }
+    }
+  };
+  const decreaseCount = async (item) => {
+    if (!isAuthenticated) {
+      dispatch(setAuthFormOpen(true));
     } else {
-      removeItem(item.id);
+      if (item.quantity > 1) {
+        const payLoad = {
+          id: item.id,
+          quantity: item.quantity - 1,
+        };
+        try {
+          await updateCart(payLoad).unwrap();
+          refetchCart();
+          successToast("Cart updated");
+        } catch (error) {
+          errorToast(error?.message);
+        }
+      } else {
+        removeItem(item.id);
+      }
     }
   };
 
   const removeItem = async (id) => {
-    const payLoad = {
-      id: id,
-    };
-    try {
-      await removeItemFromCart(payLoad).unwrap();
-      refetchCart();
-      successToast("Product removed successfully");
-    } catch (error) {
-      errorToast(error?.message);
+    if (!isAuthenticated) {
+      dispatch(remove(id));
+    } else {
+      const payLoad = {
+        id: id,
+      };
+      try {
+        await removeItemFromCart(payLoad).unwrap();
+        refetchCart();
+        successToast("Product removed successfully");
+      } catch (error) {
+        errorToast(error?.message);
+      }
     }
   };
 
   const clearCart = async () => {
-    try {
-      await triggerClearCart().unwrap();
-      refetchCart();
-      setCartValues([]);
-      successToast("Cart cleard");
-    } catch (error) {
-      errorToast(error?.message);
+    if (!isAuthenticated) {
+      dispatch(clear());
+    } else {
+      try {
+        await triggerClearCart().unwrap();
+        refetchCart();
+        setCartValues([]);
+        successToast("Cart cleard");
+      } catch (error) {
+        errorToast(error?.message);
+      }
     }
   };
 
@@ -150,31 +193,35 @@ const Cart = () => {
   // };
 
   const showPayment = () => {
-    const [firstName, ...lastNameParts] = customerDetails.name.split(" ");
-    const lastName = lastNameParts.join(" ");
-    if (window.Alatpay) {
-      let popup = window.Alatpay.setup({
-        apiKey: import.meta.env.VITE_ALATPAY_API_KEY, //TODO: UPDATE SECRET ON GITHUB
-        businessId: import.meta.env.VITE_ALATPAY_BUSINESS_ID,
-        email: customerDetails?.email,
-        phone: customerDetails?.phone,
-        firstName: firstName,
-        lastName: lastName,
-        metaData: null,
-        currency: cartValues[0]?.countryCode,
-        amount: chekOutTotal,
-        onTransaction: function (response) {
-          forAlatOrder(response);
-          closePayment();
-        },
-        onClose: function () {
-          setPaymentPopup(null);
-        },
-      });
-      popup.show();
-      setPaymentPopup(popup);
+    if (!isAuthenticated) {
+      dispatch(setAuthFormOpen(true));
     } else {
-      errorToast("Selected payment method not available");
+      const [firstName, ...lastNameParts] = customerDetails.name.split(" ");
+      const lastName = lastNameParts.join(" ");
+      if (window.Alatpay) {
+        let popup = window.Alatpay.setup({
+          apiKey: import.meta.env.VITE_ALATPAY_API_KEY, //TODO: UPDATE SECRET ON GITHUB
+          businessId: import.meta.env.VITE_ALATPAY_BUSINESS_ID,
+          email: customerDetails?.email,
+          phone: customerDetails?.phone,
+          firstName: firstName,
+          lastName: lastName,
+          metaData: null,
+          currency: cartValues[0]?.countryCode,
+          amount: chekOutTotal,
+          onTransaction: function (response) {
+            forAlatOrder(response);
+            closePayment();
+          },
+          onClose: function () {
+            setPaymentPopup(null);
+          },
+        });
+        popup.show();
+        setPaymentPopup(popup);
+      } else {
+        errorToast("Selected payment method not available");
+      }
     }
   };
 
@@ -198,9 +245,6 @@ const Cart = () => {
       errorToast(error?.message);
     }
   };
-
-  const [checkDicountCode, { isLoading: loadingDiscount }] =
-    useLazyCheckDicountCodeQuery();
 
   const handleChnage = (e) => {
     const { value } = e.target;
@@ -248,9 +292,11 @@ const Cart = () => {
                   <div className="w-1/3 lg:text-xl text-xs text-primary font-bold">
                     Price
                   </div>
+
                   <div className="w-1/3 lg:text-xl text-xs text-primary font-bold">
                     Quantity
                   </div>
+
                   <div className="w-1/3 lg:text-xl text-xs text-primary font-bold">
                     Total
                   </div>

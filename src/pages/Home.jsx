@@ -14,6 +14,7 @@ import { countryCurrency, countryPrice } from "../utilities/PriceSelection";
 import { useAddItemToCartMutation } from "../services/cart";
 import { setAuthFormOpen } from "../features/AuthSlice";
 import BarsLoader from "../utilities/BarsLoader";
+import { add } from "../features/CartSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Home = () => {
   const theState = useSelector((state) => state);
   const allProduct = theState?.allProducts.allProducts;
   const cart = theState?.cart?.cartList;
+
   const favorite = theState?.fav;
   const isAuthenticated = theState.auth.isAuthenticated;
   const categories = theState?.categoryProduct?.allcategories;
@@ -42,13 +44,16 @@ const Home = () => {
 
   // ///////// CART ///////
   const { refetchCart } = useOutletContext();
+
   const addToCart = async (product) => {
     const isDuplicate = duplicateCheck(cart, product);
-    if (!isAuthenticated) {
-      dispatch(setAuthFormOpen(true));
-    } else if (isDuplicate) {
+    if (isDuplicate) {
       warnToast("Item already in cart, click + to increace the quantity");
       navigate("/cart");
+    } else if (!isAuthenticated) {
+      // dispatch(setAuthFormOpen(true));
+      dispatch(add(product));
+      successToast("Product added to cart");
     } else {
       try {
         const payLoad = {

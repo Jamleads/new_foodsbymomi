@@ -7,13 +7,15 @@ const cartSlice = createSlice({
   },
   reducers: {
     add(state, action) {
-      state.push(action.payload);
+      state.cartList.push(action.payload);
     },
     remove(state, action) {
-      return state.filter((item) => item.id !== action.payload);
+      state.cartList = state.cartList.filter(
+        (item) => item.id !== action.payload
+      );
     },
-    clear() {
-      return [];
+    clear(state) {
+      state.cartList = [];
     },
     setCartList(state, action) {
       state.cartList = action.payload;

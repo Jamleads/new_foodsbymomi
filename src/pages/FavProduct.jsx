@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { setAuthFormOpen } from "../features/AuthSlice";
 import { useAddItemToCartMutation } from "../services/cart";
 import BarsLoader from "../utilities/BarsLoader";
+import { add } from "../features/CartSlice";
 
 const FavProduct = () => {
   const dispatch = useDispatch();
@@ -26,13 +27,16 @@ const FavProduct = () => {
   // ///////// CART ///////
   const [addItemToCart, { isLoading: isAdding }] = useAddItemToCartMutation();
   const { refetchCart } = useOutletContext();
+
   const addToCart = async (product) => {
     const isDuplicate = duplicateCheck(cart, product);
-    if (!isAuthenticated) {
-      dispatch(setAuthFormOpen(true));
-    } else if (isDuplicate) {
+    if (isDuplicate) {
       warnToast("Item already in cart, click + to increace the quantity");
       navigate("/cart");
+    } else if (!isAuthenticated) {
+      // dispatch(setAuthFormOpen(true));
+      dispatch(add(product));
+      successToast("Product added to cart");
     } else {
       try {
         const payLoad = {
