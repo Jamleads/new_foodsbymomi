@@ -24,7 +24,7 @@ const OrderDetails = () => {
   return (
     <>
       {isLoading ? (
-        <div className="modal">
+        <div className="modal_bar">
           <BarsLoader color={""} height={50} />
         </div>
       ) : (

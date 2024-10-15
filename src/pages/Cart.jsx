@@ -265,7 +265,7 @@ const Cart = () => {
   return (
     <>
       {isLoading || loading2 || isClearing || isflutterwave ? (
-        <div className="modal">
+        <div className="modal_bar">
           <BarsLoader color={""} height={50} />
         </div>
       ) : (

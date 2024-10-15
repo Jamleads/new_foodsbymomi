@@ -95,7 +95,7 @@ const CategoryProduct = () => {
   return (
     <>
       {isAdding ? (
-        <div className="modal">
+        <div className="modal_bars">
           <BarsLoader color={""} height={50} />
         </div>
       ) : (

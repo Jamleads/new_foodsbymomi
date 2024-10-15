@@ -83,7 +83,7 @@ const Shop = () => {
   return (
     <>
       {isAdding ? (
-        <div className="modal">
+        <div className="modal_bar">
           <BarsLoader color={""} height={50} />
         </div>
       ) : (
