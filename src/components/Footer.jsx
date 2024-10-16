@@ -37,12 +37,12 @@ const Footer = () => {
       <div className="footer-top lg:p-0 px-5 py-5">
         <div className="footer-top-wrap lg:w-[70%] mx-auto lg:py-20 flex lg:flex-row flex-col-reverse justify-between gap-5">
           <div className="lg:w-2/5">
-            <div className="w-full bg-[#ffffff] my-3 flex items-center justify-between">
+            {/* <div className="w-full bg-[#ffffff] my-3 flex items-center justify-between">
               <input type="text" className="w-[70%] py-2 px-5" />
               <button className="py-2 px-5 text-xs bg-primary shadow-2xl rounded-md text-white font-bold">
                 Sign Up
               </button>
-            </div>
+            </div> */}
             <ul className="flex flex-col gap-3">
               <p className="text-[#8A8FB9] text-sm">Contact Address</p>
               <li className="text-[#8A8FB9] text-sm list-disc">

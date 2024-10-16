@@ -22,7 +22,6 @@ import { setCartList } from "../features/CartSlice.js";
 
 const LayOutKid = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const { pathname } = useLocation();
 
   // const [popUp, setPopUp] = useState(true);
@@ -111,13 +110,27 @@ const LayOutKid = () => {
               } modal-backdrop`}
             ></div>
           )} */}
-
           <div className="">
             <Nav />
           </div>
 
           {/* LEC: PATHNAME AND OUTLET */}
-          <div className="mt-[115px]">
+          <div className="mt-[110px]">
+            {!isAuthenticated && pathname == "/cart" ? (
+              <div className=" bg-red-500 text-center font-bold p-1 text-white">
+                Please{" "}
+                <span
+                  onClick={() => dispatch(setAuthFormOpen(true))}
+                  className="underline cursor-pointer text-cyan-900"
+                >
+                  login
+                </span>{" "}
+                to secure item placed in cart
+              </div>
+            ) : (
+              ""
+            )}
+
             {pathname !== "/" && pathname !== "/waitlist" ? (
               <div className="show h-[16vh] w-full flex items-center bg-[#F2F0FF]">
                 <div className="w-[70%] mx-auto">
@@ -141,7 +154,6 @@ const LayOutKid = () => {
 
             <Outlet context={{ refetchCart: refetch }} />
           </div>
-
           {/* LEC: FOOTTER */}
           {pathname !== "/waitlist" && (
             <div className={`footer`}>

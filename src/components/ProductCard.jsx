@@ -16,7 +16,7 @@ const ProductCard = ({
   return (
     <div className={`w-[100%] shadow-lg ${herf} ${style}`}>
       <div
-        className={`product-img-wrap group w-full lg:h-[270px] p-5 bg-offSkyBlue hover:bg-[#F7F7F7] ease-in duration-300 flex justify-center relative`}
+        className={`product-img-wrap group w-full h-[270px] p-5 bg-offSkyBlue hover:bg-[#F7F7F7] ease-in duration-300 flex justify-center relative`}
       >
         <Link to={`/shop/${title}`} onClick={onClickToDetails}>
           <img src={productImg} alt="product-img" className="md:h-[100%]" />
